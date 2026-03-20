@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-headline: var(--font-manrope), sans-serif;
+  
+  --color-slate-950: #020617;
+  --color-slate-900: #0f172a;
+  --color-slate-800: #1e293b;
+  --color-primary: #3755c3;
+}
+
+@layer base {
+  body {
+    @apply bg-slate-950 text-slate-200 font-sans;
+  }
+}
+
+.editorial-gradient {
+  background: linear-gradient(135deg, #3755c3 0%, #dde1ff 100%);
+}
+
+.glass-panel {
+  background: rgba(15, 23, 42, 0.8);
+  backdrop-filter: blur(12px);
+}
