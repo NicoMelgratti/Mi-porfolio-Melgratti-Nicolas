@@ -11,6 +11,13 @@ const education = [
     desc: 'Deepening knowledge in systems theory, discrete mathematics, and large-scale software engineering practices. Focusing on the intersection of data integrity and architectural scalability.',
     status: 'In Progress',
   },
+    {
+        school: 'Dev Senior',
+        degree: 'Enterprise Full Stack with Spring Boot 4 and Angular 21',
+        period: '2026',
+        desc: 'Professional Certificate focused on developing high-scale enterprise applications. Mastered advanced patterns in Spring Boot 4 and modern frontend architecture with Angular 21.',
+        status: 'Completed',
+    },
   {
     school: 'Bachillerato en Economía',
     degree: 'Secondary Education',
