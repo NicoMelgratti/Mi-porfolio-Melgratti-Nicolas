@@ -1,0 +1,280 @@
+﻿
+> curriculum@0.1.0 build
+> next build
+
+Ôû▓ Next.js 16.2.0 (Turbopack)
+
+  Creating an optimized production build ...
+node.exe : 
+En línea: 1 Carácter: 1
++ & "C:\Program 
+Files\nodejs/node.exe" 
+"C:\Program 
+Files\nodejs/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~
+    + CategoryInfo         
+     : NotSpecified: (:St  
+  ring) [], RemoteExcept   
+ ion
+    + FullyQualifiedErrorI 
+   d : NativeCommandError
+ 
+> Build error occurred
+Error: Turbopack build 
+failed with 2 errors:
+./src/components/TechStack.
+tsx:5:1
+Export SiCss3 doesn't 
+exist in target module
+  [90m 3 |[0m 
+[36mimport[0m 
+[33mReact[0m 
+[36mfrom[0m 
+[32m'react'[0m;
+  [90m 4 |[0m 
+[36mimport[0m { motion } 
+[36mfrom[0m 
+[32m'motion/react'[0m;
+[31m[1m>[0m [90m 5 
+|[0m [36mimport[0m { 
+  [90m   |[0m 
+[31m[1m^^^^^^^^[0m
+[31m[1m>[0m [90m 6 
+|[0m   [33mSiReact[0m, 
+[33mSiAngular[0m, 
+[33mSiNextdotjs[0m, 
+[33mSiTailwindcss[0m, 
+[33mSiSpringboot[0m,
+  [90m   |[0m [31m[1m^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^[0m
+[31m[1m>[0m [90m 7 
+|[0m   [33mSiGit[0m, 
+[33mSiGithub[0m, 
+[33mSiDocker[0m, 
+[33mSiApachemaven[0m,
+  [90m   |[0m [31m[1m^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m 8 
+|[0m   [33mSiJunit5[0m, 
+[33mSiPostman[0m, 
+[33mSiSwagger[0m,
+  [90m   |[0m [31m[1m^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^[0m
+[31m[1m>[0m [90m 9 
+|[0m   
+[33mSiPostgresql[0m, 
+[33mSiMysql[0m,
+  [90m   |[0m [31m[1m^^
+^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m10 
+|[0m   
+[33mSiSupabase[0m, 
+[33mSiFirebase[0m, 
+[33mSiVercel[0m,
+  [90m   |[0m [31m[1m^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^[0m
+[31m[1m>[0m [90m11 
+|[0m   
+[33mSiNodedotjs[0m, 
+[33mSiRuby[0m, 
+[33mSiC[0m, 
+[33mSiCplusplus[0m,
+  [90m   |[0m [31m[1m^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^[0m
+[31m[1m>[0m [90m12 
+|[0m   [33mSiHtml5[0m, 
+[33mSiCss3[0m, 
+[33mSiJavascript[0m, 
+[33mSiTypescript[0m,
+  [90m   |[0m [31m[1m^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m13 
+|[0m   [33mSiPython[0m, 
+[33mSiNumpy[0m, 
+[33mSiPandas[0m, 
+[33mSiScipy[0m, 
+[33mSiOpencv[0m, 
+[33mSiJupyter[0m
+  [90m   |[0m [31m[1m^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^[0m
+[31m[1m>[0m [90m14 
+|[0m } [36mfrom[0m 
+[32m'react-icons/si'[0m;
+  [90m   |[0m [31m[1m^^
+^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m15 |[0m 
+[36mimport[0m { 
+[33mFaJava[0m } 
+[36mfrom[0m 
+[32m'react-icons/fa'[0m;
+  [90m16 |[0m 
+[36mimport[0m { 
+[33mVscCode[0m, 
+[33mVscBeaker[0m, 
+[33mVscDatabase[0m } 
+[36mfrom[0m 
+[32m"react-icons/vsc"[0m;
+  [90m17 |[0m
+
+The export SiCss3 was not 
+found in module [project]/n
+ode_modules/react-icons/si/
+index.mjs [app-client] 
+(ecmascript).
+Did you mean to import 
+SiCss?
+All exports of the module 
+are statically known (It 
+doesn't have dynamic 
+exports). So it's known 
+statically that the 
+requested export doesn't 
+exist.
+
+Import trace:
+  Server Component:
+    ./src/components/TechSt
+ack.tsx
+    ./src/app/page.tsx
+
+
+./src/components/TechStack.
+tsx:5:1
+Export SiCss3 doesn't 
+exist in target module
+  [90m 3 |[0m 
+[36mimport[0m 
+[33mReact[0m 
+[36mfrom[0m 
+[32m'react'[0m;
+  [90m 4 |[0m 
+[36mimport[0m { motion } 
+[36mfrom[0m 
+[32m'motion/react'[0m;
+[31m[1m>[0m [90m 5 
+|[0m [36mimport[0m { 
+  [90m   |[0m 
+[31m[1m^^^^^^^^[0m
+[31m[1m>[0m [90m 6 
+|[0m   [33mSiReact[0m, 
+[33mSiAngular[0m, 
+[33mSiNextdotjs[0m, 
+[33mSiTailwindcss[0m, 
+[33mSiSpringboot[0m,
+  [90m   |[0m [31m[1m^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^[0m
+[31m[1m>[0m [90m 7 
+|[0m   [33mSiGit[0m, 
+[33mSiGithub[0m, 
+[33mSiDocker[0m, 
+[33mSiApachemaven[0m,
+  [90m   |[0m [31m[1m^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m 8 
+|[0m   [33mSiJunit5[0m, 
+[33mSiPostman[0m, 
+[33mSiSwagger[0m,
+  [90m   |[0m [31m[1m^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^[0m
+[31m[1m>[0m [90m 9 
+|[0m   
+[33mSiPostgresql[0m, 
+[33mSiMysql[0m,
+  [90m   |[0m [31m[1m^^
+^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m10 
+|[0m   
+[33mSiSupabase[0m, 
+[33mSiFirebase[0m, 
+[33mSiVercel[0m,
+  [90m   |[0m [31m[1m^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^[0m
+[31m[1m>[0m [90m11 
+|[0m   
+[33mSiNodedotjs[0m, 
+[33mSiRuby[0m, 
+[33mSiC[0m, 
+[33mSiCplusplus[0m,
+  [90m   |[0m [31m[1m^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^[0m
+[31m[1m>[0m [90m12 
+|[0m   [33mSiHtml5[0m, 
+[33mSiCss3[0m, 
+[33mSiJavascript[0m, 
+[33mSiTypescript[0m,
+  [90m   |[0m [31m[1m^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m13 
+|[0m   [33mSiPython[0m, 
+[33mSiNumpy[0m, 
+[33mSiPandas[0m, 
+[33mSiScipy[0m, 
+[33mSiOpencv[0m, 
+[33mSiJupyter[0m
+  [90m   |[0m [31m[1m^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^[0m
+[31m[1m>[0m [90m14 
+|[0m } [36mfrom[0m 
+[32m'react-icons/si'[0m;
+  [90m   |[0m [31m[1m^^
+^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m15 |[0m 
+[36mimport[0m { 
+[33mFaJava[0m } 
+[36mfrom[0m 
+[32m'react-icons/fa'[0m;
+  [90m16 |[0m 
+[36mimport[0m { 
+[33mVscCode[0m, 
+[33mVscBeaker[0m, 
+[33mVscDatabase[0m } 
+[36mfrom[0m 
+[32m"react-icons/vsc"[0m;
+  [90m17 |[0m
+
+The export SiCss3 was not 
+found in module [project]/n
+ode_modules/react-icons/si/
+index.mjs [app-ssr] 
+(ecmascript).
+Did you mean to import 
+SiCss?
+All exports of the module 
+are statically known (It 
+doesn't have dynamic 
+exports). So it's known 
+statically that the 
+requested export doesn't 
+exist.
+
+Import trace:
+  Server Component:
+    ./src/components/TechSt
+ack.tsx
+    ./src/app/page.tsx
+
+
+    at <unknown> (./src/com
+ponents/TechStack.tsx:5:1)
+    at <unknown> (./src/com
+ponents/TechStack.tsx:5:1)
