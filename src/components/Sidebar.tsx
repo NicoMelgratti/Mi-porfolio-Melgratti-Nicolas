@@ -1,12 +1,13 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { User, BrainCircuit, Terminal, GraduationCap, Award, Mail, Github, Linkedin } from 'lucide-react';
+import { User, BrainCircuit, Terminal, GraduationCap, Award, Mail, Github, Linkedin, FolderGit2 } from 'lucide-react';
 
 const navItems = [
   { id: 'profile',        label: 'Profile',        icon: User },
   { id: 'skills',         label: 'Skills',          icon: BrainCircuit },
-  { id: 'projects',       label: 'Projects',        icon: Terminal },
+  { id: 'terminal',       label: 'Terminal',        icon: Terminal },
+  { id: 'projects',       label: 'Projects',        icon: FolderGit2 },
   { id: 'education',      label: 'Education',       icon: GraduationCap },
   { id: 'certifications', label: 'Certifications',  icon: Award },
 ];
@@ -15,19 +16,29 @@ export default function Sidebar() {
   const [active, setActive] = useState('profile');
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) setActive(entry.target.id);
-        });
-      },
-      { rootMargin: '-40% 0px -55% 0px' }
-    );
-    navItems.forEach(({ id }) => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
-    return () => observer.disconnect();
+    const getActive = () => {
+      const viewportOffset = window.innerHeight * 0.35; // trigger zone: 35% from top
+      let currentId = navItems[0].id;
+      let minDistance = Infinity;
+
+      navItems.forEach(({ id }) => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        const rect = el.getBoundingClientRect();
+        // Distance from the trigger zone to the section's top edge
+        const distance = Math.abs(rect.top - viewportOffset);
+        if (rect.top <= viewportOffset && distance < minDistance) {
+          minDistance = distance;
+          currentId = id;
+        }
+      });
+
+      setActive(currentId);
+    };
+
+    window.addEventListener('scroll', getActive, { passive: true });
+    getActive(); // run once on mount
+    return () => window.removeEventListener('scroll', getActive);
   }, []);
 
   return (
@@ -81,8 +92,11 @@ export default function Sidebar() {
                 <span
                   className={`
                     absolute left-0 top-1/2 -translate-y-1/2 w-0.5 h-7 rounded-r-full transition-all duration-300
-                    ${isActive ? 'bg-gradient-to-b from-blue-400 to-cyan-400 opacity-100' : 'bg-blue-500 opacity-0 group-hover:opacity-60'}
+                    ${isActive ? 'opacity-100' : 'opacity-0 group-hover:opacity-60'}
                   `}
+                  style={isActive
+                    ? { background: 'linear-gradient(to bottom, #22d3ee, #7c3aed)' }
+                    : { background: '#3b82f6' }}
                 />
 
                 {/* Active bg pill */}
@@ -126,12 +140,15 @@ export default function Sidebar() {
             </a>
           </div>
 
-          <a
-            href="mailto:nicomelgratti@gmail.com"
-            className="mt-1 w-full py-2.5 btn-cv text-white font-bold rounded-xl text-sm text-center flex justify-center items-center gap-2 active:scale-95"
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              window.dispatchEvent(new CustomEvent('openContactModal'));
+            }}
+            className="mt-1 w-full py-2.5 btn-cv text-white font-bold rounded-xl text-sm text-center flex justify-center items-center gap-2 active:scale-95 cursor-pointer"
           >
             Hire Me
-          </a>
+          </button>
         </div>
       </div>
     </aside>

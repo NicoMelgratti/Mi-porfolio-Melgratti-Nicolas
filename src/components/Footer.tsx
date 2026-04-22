@@ -1,3 +1,5 @@
+"use client";
+
 import React from 'react';
 import { Github, Linkedin, Mail } from 'lucide-react';
 
@@ -21,13 +23,16 @@ export default function Footer() {
 
         {/* Social links */}
         <div className="flex items-center gap-3">
-          <a
-            href="mailto:nicomelgratti@gmail.com"
-            className="p-2.5 glass-subtle rounded-xl text-slate-400 hover:text-blue-400 hover:border-blue-400/30 transition-all duration-300"
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              window.dispatchEvent(new CustomEvent('openContactModal'));
+            }}
+            className="p-2.5 glass-subtle rounded-xl text-slate-400 hover:text-blue-400 hover:border-blue-400/30 transition-all duration-300 cursor-pointer"
             aria-label="Email"
           >
             <Mail size={17} />
-          </a>
+          </button>
           <a
             href="https://github.com/NicoMelgratti"
             target="_blank"

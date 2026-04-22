@@ -10,6 +10,8 @@
   --color-primary: #3b82f6;
   --color-primary-dark: #2563eb;
   --color-cyan: #22d3ee;
+  --color-violet: #7c3aed;
+  --color-violet-light: #a78bfa;
 }
 
 @layer base {
@@ -17,7 +19,7 @@
     @apply bg-slate-950 text-slate-200 font-sans;
     background: 
       radial-gradient(ellipse 80% 60% at 20% -10%, rgba(37, 99, 235, 0.18) 0%, transparent 60%),
-      radial-gradient(ellipse 60% 50% at 80% 110%, rgba(34, 211, 238, 0.10) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 50% at 80% 110%, rgba(124, 58, 237, 0.10) 0%, transparent 60%),
       #020617;
     background-attachment: fixed;
   }
@@ -78,6 +80,29 @@
   border: 1px solid rgba(59, 130, 246, 0.12);
 }
 
+/* Violet glassmorphism variant */
+.glass-violet {
+  background: rgba(15, 10, 30, 0.55);
+  backdrop-filter: blur(20px) saturate(1.4);
+  -webkit-backdrop-filter: blur(20px) saturate(1.4);
+  border: 1px solid rgba(124, 58, 237, 0.22);
+}
+
+.glass-violet-subtle {
+  background: rgba(30, 20, 50, 0.35);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(124, 58, 237, 0.14);
+}
+
+/* Terminal dark glass */
+.glass-terminal {
+  background: rgba(5, 8, 20, 0.92);
+  backdrop-filter: blur(24px) saturate(1.2);
+  -webkit-backdrop-filter: blur(24px) saturate(1.2);
+  border: 1px solid rgba(34, 211, 238, 0.15);
+}
+
 /* Gradiente editorial */
 .editorial-gradient {
   background: linear-gradient(135deg, #2563eb 0%, #22d3ee 100%);
@@ -85,11 +110,31 @@
 
 /* Glow azul neón */
 .neon-glow {
-  box-shadow: 0 0 20px rgba(59, 130, 246, 0.35), 0 0 60px rgba(34, 211, 238, 0.10);
+  box-shadow:
+    0 0 20px rgba(59, 130, 246, 0.35),
+    0 0 60px rgba(34, 211, 238, 0.10);
 }
 
 .neon-glow-sm {
   box-shadow: 0 0 10px rgba(59, 130, 246, 0.25);
+}
+
+/* Violet glow variants */
+.neon-glow-violet {
+  box-shadow:
+    0 0 20px rgba(124, 58, 237, 0.40),
+    0 0 60px rgba(167, 139, 250, 0.12);
+}
+
+.neon-glow-violet-sm {
+  box-shadow: 0 0 12px rgba(124, 58, 237, 0.30);
+}
+
+/* Cyan glow variant */
+.neon-glow-cyan {
+  box-shadow:
+    0 0 20px rgba(34, 211, 238, 0.35),
+    0 0 60px rgba(34, 211, 238, 0.10);
 }
 
 /* Deprecated legacy – kept for compatibility */
@@ -110,6 +155,51 @@
 }
 .mesh-orb-2 {
   animation: mesh-drift 18s ease-in-out infinite reverse;
+}
+
+/* ===== TERMINAL ANIMATIONS ===== */
+
+/* Cursor parpadeante */
+@keyframes terminal-blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+.terminal-cursor {
+  display: inline-block;
+  width: 8px;
+  height: 15px;
+  background: #22d3ee;
+  vertical-align: middle;
+  animation: terminal-blink 1.1s step-end infinite;
+  border-radius: 1px;
+  box-shadow: 0 0 8px rgba(34, 211, 238, 0.7);
+}
+
+/* Línea de escaneo CRT sutil */
+@keyframes scan-line {
+  0% { top: -4px; }
+  100% { top: 100%; }
+}
+
+.scan-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(34, 211, 238, 0.06), transparent);
+  pointer-events: none;
+  animation: scan-line 5s linear infinite;
+}
+
+/* Code snippet line fade-in (used with inline delay style) */
+@keyframes code-line-in {
+  from { opacity: 0; transform: translateX(-6px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+.code-line-animate {
+  animation: code-line-in 0.35s ease-out both;
 }
 
 /* Shimmer para botones */
