@@ -42,7 +42,7 @@ export default function Hero() {
           {/* Centered Hero Text */}
           <motion.div
             style={{ top: textTop, y: textY, x: "-50%", scale: textScale }}
-            className="absolute left-1/2 w-full max-w-4xl z-20 flex flex-col items-center text-center px-6"
+            className="absolute left-1/2 w-full max-w-4xl z-0 flex flex-col items-center text-center px-6"
           >
             <span className="inline-flex items-center gap-2 px-3 py-1 glass-subtle font-sans text-[10px] tracking-[0.22em] uppercase mb-6 rounded-full border border-cyan-400/20" style={{ color: '#22d3ee' }}>
               <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
@@ -58,52 +58,99 @@ export default function Hero() {
             </p>
           </motion.div>
 
-          {/* The Zooming Computer */}
+          {/* The Zooming Device */}
           <motion.div
             style={{ scale: computerScale }}
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 flex flex-col items-center justify-center"
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 flex flex-col items-center justify-center pointer-events-none"
           >
-            {/* THE SCREEN (Transparent Hole) */}
-            <div className="relative w-[900px] h-[540px] rounded-lg">
+            {/* --- DESKTOP MONITOR --- */}
+            <div className="hidden md:flex flex-col items-center justify-center">
+              {/* THE SCREEN (Transparent Hole) */}
+              <div className="relative w-[85vw] max-w-[900px] aspect-[16/10] rounded-lg">
+                
+                {/* Dark Overlay combining safe box-shadow for corners and 4 infinite quads for coverage */}
+                <motion.div
+                  className="absolute inset-0 pointer-events-none rounded-lg"
+                  style={{
+                    boxShadow: '0 0 0 50px #020617',
+                    opacity: frameOpacity
+                  }}
+                >
+                  <div className="absolute bottom-full left-[-500vw] right-[-500vw] h-[500vh] bg-[#020617]" />
+                  <div className="absolute top-full left-[-500vw] right-[-500vw] h-[500vh] bg-[#020617]" />
+                  <div className="absolute top-0 bottom-0 right-full w-[500vw] bg-[#020617]" />
+                  <div className="absolute top-0 bottom-0 left-full w-[500vw] bg-[#020617]" />
+                </motion.div>
 
-              {/* Massive Dark Overlay */}
-              <motion.div
-                className="absolute inset-0 pointer-events-none"
-                style={{
-                  boxShadow: '0 0 0 10000px #020617', // slate-950
-                  borderRadius: '8px',
-                  opacity: frameOpacity
-                }}
-              />
+                {/* THE COMPUTER FRAME */}
+                <motion.div
+                  className="absolute inset-[-28px] rounded-3xl border-[28px] border-slate-800 shadow-2xl flex flex-col justify-between bg-transparent pointer-events-none"
+                  style={{ opacity: frameOpacity }}
+                >
+                  <div className="absolute -top-[18px] left-1/2 -translate-x-1/2 w-4 h-4 bg-slate-950 rounded-full flex items-center justify-center">
+                    <div className="w-1.5 h-1.5 bg-blue-400 rounded-full" />
+                  </div>
+                  <div className="absolute -bottom-[20px] left-1/2 -translate-x-1/2 w-10 h-2 bg-slate-700 rounded-full" />
+                </motion.div>
 
-              {/* THE COMPUTER FRAME */}
+                {/* Glass reflection over the hole */}
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-tr from-white/[0.04] via-transparent to-white/[0.01] rounded-lg pointer-events-none"
+                  style={{ opacity: frameOpacity }}
+                />
+              </div>
+
+              {/* THE STAND */}
               <motion.div
-                className="absolute inset-[-28px] rounded-3xl border-[28px] border-slate-800 shadow-2xl flex flex-col justify-between bg-transparent"
-                style={{ opacity: frameOpacity }}
+                className="absolute top-[100%] mt-[28px] flex flex-col items-center"
+                style={{ opacity: standOpacity }}
               >
-                {/* Webcam dot */}
-                <div className="absolute -top-[18px] left-1/2 -translate-x-1/2 w-4 h-4 bg-slate-950 rounded-full flex items-center justify-center">
-                  <div className="w-1.5 h-1.5 bg-blue-400 rounded-full" />
-                </div>
-                {/* Bottom bezel logo indicator */}
-                <div className="absolute -bottom-[20px] left-1/2 -translate-x-1/2 w-10 h-2 bg-slate-700 rounded-full" />
+                <div className="w-20 h-24 bg-gradient-to-b from-slate-800 to-slate-900 border-x border-slate-700" />
+                <div className="w-64 h-5 bg-slate-700 rounded-t-xl shadow-lg border-t border-slate-600" />
               </motion.div>
-
-              {/* Glass reflection over the transparent screen hole */}
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-tr from-white/[0.04] via-transparent to-white/[0.01] rounded-lg pointer-events-none"
-                style={{ opacity: frameOpacity }}
-              />
             </div>
 
-            {/* THE STAND */}
-            <motion.div
-              className="absolute top-[100%] mt-[28px] flex flex-col items-center"
-              style={{ opacity: standOpacity }}
-            >
-              <div className="w-20 h-24 bg-gradient-to-b from-slate-800 to-slate-900 border-x border-slate-700" />
-              <div className="w-64 h-5 bg-slate-700 rounded-t-xl shadow-lg border-t border-slate-600" />
-            </motion.div>
+            {/* --- MOBILE PHONE --- */}
+            <div className="flex md:hidden flex-col items-center justify-center">
+              {/* THE SCREEN (Transparent Hole) */}
+              <div className="relative w-[75vw] max-w-[320px] aspect-[9/19.5] rounded-3xl">
+                
+                {/* Dark Overlay combining safe box-shadow for corners and 4 infinite quads for coverage */}
+                <motion.div
+                  className="absolute inset-0 pointer-events-none rounded-3xl"
+                  style={{
+                    boxShadow: '0 0 0 50px #020617',
+                    opacity: frameOpacity
+                  }}
+                >
+                  <div className="absolute bottom-full left-[-500vw] right-[-500vw] h-[500vh] bg-[#020617]" />
+                  <div className="absolute top-full left-[-500vw] right-[-500vw] h-[500vh] bg-[#020617]" />
+                  <div className="absolute top-0 bottom-0 right-full w-[500vw] bg-[#020617]" />
+                  <div className="absolute top-0 bottom-0 left-full w-[500vw] bg-[#020617]" />
+                </motion.div>
+
+                {/* THE PHONE FRAME */}
+                <motion.div
+                  className="absolute inset-[-16px] rounded-[2.5rem] border-[16px] border-slate-800 shadow-2xl flex flex-col justify-between bg-transparent pointer-events-none"
+                  style={{ opacity: frameOpacity }}
+                >
+                  {/* Dynamic Island / Notch */}
+                  <div className="absolute top-[8px] left-1/2 -translate-x-1/2 w-[35%] h-5 bg-slate-950 rounded-full flex items-center justify-center gap-1.5">
+                    <div className="w-1.5 h-1.5 bg-slate-800 rounded-full" />
+                    <div className="w-1.5 h-1.5 bg-blue-900 rounded-full shadow-[0_0_4px_#3b82f6]" />
+                  </div>
+                  
+                  {/* Home indicator bar */}
+                  <div className="absolute bottom-[6px] left-1/2 -translate-x-1/2 w-[35%] h-1 bg-slate-600 rounded-full" />
+                </motion.div>
+
+                {/* Glass reflection */}
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-tr from-white/[0.06] via-transparent to-white/[0.02] rounded-3xl pointer-events-none"
+                  style={{ opacity: frameOpacity }}
+                />
+              </div>
+            </div>
 
           </motion.div>
 
