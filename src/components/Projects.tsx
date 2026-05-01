@@ -8,10 +8,12 @@ const projects = [
   {
     title: 'Gestión Hotelera',
     tag: 'Web App',
+    badge: 'UTN',
     desc: 'Registración, ocupación y facturación para un hotel.',
     tech: ['Java', 'JavaScript', 'React'],
     image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=800&auto=format&fit=crop',
     repoUrl: 'https://github.com/FranciscoSoltermann/Gestion-hotelera-Alpine.git',
+    repoUrlFront: 'https://github.com/FranciscoSoltermann/FrontEnd-Alpine.git',
     accent: '#3b82f6',
     linkType: 'github' as const,
   },
@@ -155,32 +157,79 @@ export default function Projects() {
                 ))}
               </div>
 
-              {/* Action button */}
-              <a
-                href={project.repoUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-300 active:scale-95"
-                style={{
-                  background: `${project.accent}18`,
-                  color: project.accent,
-                  border: `1px solid ${project.accent}40`,
-                }}
-                onMouseEnter={e => {
-                  (e.currentTarget as HTMLElement).style.background = `${project.accent}30`;
-                  (e.currentTarget as HTMLElement).style.boxShadow = `0 0 16px ${project.accent}40`;
-                }}
-                onMouseLeave={e => {
-                  (e.currentTarget as HTMLElement).style.background = `${project.accent}18`;
-                  (e.currentTarget as HTMLElement).style.boxShadow = 'none';
-                }}
-              >
-                {project.linkType === 'live' ? (
-                  <><Globe size={14} /> Live Site</>
-                ) : (
-                  <><Github size={14} /> View on GitHub</>
-                )}
-              </a>
+              {/* Action buttons */}
+              {'repoUrlFront' in project && (project as any).repoUrlFront ? (
+                <div className="flex gap-2">
+                  <a
+                    href={(project as any).repoUrlFront}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 flex items-center justify-center gap-2 py-2.5 px-2 rounded-xl text-[10px] font-bold uppercase tracking-wider transition-all duration-300 active:scale-95"
+                    style={{
+                      background: `${project.accent}18`,
+                      color: project.accent,
+                      border: `1px solid ${project.accent}40`,
+                    }}
+                    onMouseEnter={e => {
+                      (e.currentTarget as HTMLElement).style.background = `${project.accent}30`;
+                      (e.currentTarget as HTMLElement).style.boxShadow = `0 0 16px ${project.accent}40`;
+                    }}
+                    onMouseLeave={e => {
+                      (e.currentTarget as HTMLElement).style.background = `${project.accent}18`;
+                      (e.currentTarget as HTMLElement).style.boxShadow = 'none';
+                    }}
+                  >
+                    <Github size={14} /> Frontend
+                  </a>
+                  <a
+                    href={project.repoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 flex items-center justify-center gap-2 py-2.5 px-2 rounded-xl text-[10px] font-bold uppercase tracking-wider transition-all duration-300 active:scale-95"
+                    style={{
+                      background: `${project.accent}18`,
+                      color: project.accent,
+                      border: `1px solid ${project.accent}40`,
+                    }}
+                    onMouseEnter={e => {
+                      (e.currentTarget as HTMLElement).style.background = `${project.accent}30`;
+                      (e.currentTarget as HTMLElement).style.boxShadow = `0 0 16px ${project.accent}40`;
+                    }}
+                    onMouseLeave={e => {
+                      (e.currentTarget as HTMLElement).style.background = `${project.accent}18`;
+                      (e.currentTarget as HTMLElement).style.boxShadow = 'none';
+                    }}
+                  >
+                    <Github size={14} /> Backend
+                  </a>
+                </div>
+              ) : (
+                <a
+                  href={project.repoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-300 active:scale-95"
+                  style={{
+                    background: `${project.accent}18`,
+                    color: project.accent,
+                    border: `1px solid ${project.accent}40`,
+                  }}
+                  onMouseEnter={e => {
+                    (e.currentTarget as HTMLElement).style.background = `${project.accent}30`;
+                    (e.currentTarget as HTMLElement).style.boxShadow = `0 0 16px ${project.accent}40`;
+                  }}
+                  onMouseLeave={e => {
+                    (e.currentTarget as HTMLElement).style.background = `${project.accent}18`;
+                    (e.currentTarget as HTMLElement).style.boxShadow = 'none';
+                  }}
+                >
+                  {project.linkType === 'live' ? (
+                    <><Globe size={14} /> Live Site</>
+                  ) : (
+                    <><Github size={14} /> View on GitHub</>
+                  )}
+                </a>
+              )}
             </div>
           </motion.div>
         ))}
