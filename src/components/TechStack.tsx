@@ -8,18 +8,18 @@ import {
   SiJunit5, SiPostman, SiSwagger,
   SiPostgresql, SiMysql,
   SiSupabase, SiFirebase, SiVercel,
-  SiNodedotjs, SiRuby, SiC, SiCplusplus,
+  SiNodedotjs, SiC, SiCplusplus,
   SiHtml5, SiCss, SiJavascript, SiTypescript,
-  SiPython, SiNumpy, SiPandas, SiScipy, SiOpencv, SiJupyter
+  SiPython
 } from 'react-icons/si';
 import { FaJava } from 'react-icons/fa';
-import { VscCode, VscBeaker, VscDatabase } from 'react-icons/vsc';
+import { VscCode, VscBeaker } from 'react-icons/vsc';
+import { Cpu } from 'lucide-react';
 
 type SkillItem = {
   name: string;
   icon: React.ElementType;
   color: string;
-  invertDark?: boolean;
 };
 
 type SkillCategory = {
@@ -29,187 +29,108 @@ type SkillCategory = {
 
 const skillCategories: SkillCategory[] = [
   {
-    title: 'FRAMEWORKS',
+    title: 'Backend & Lenguajes',
     skills: [
-      { name: 'React',        icon: SiReact,       color: '#61DAFB' },
-      { name: 'Angular',      icon: SiAngular,     color: '#DD0031' },
-      { name: 'Next.js',      icon: SiNextdotjs,   color: '#FFFFFF' },
-      { name: 'Tailwind CSS', icon: SiTailwindcss, color: '#06B6D4' },
-      { name: 'Spring Boot',  icon: SiSpringboot,  color: '#6DB33F' },
+      { name: 'Java', icon: FaJava, color: '#f59e0b' },
+      { name: 'Spring Boot', icon: SiSpringboot, color: '#86efac' },
+      { name: 'Node.js', icon: SiNodedotjs, color: '#6ee7b7' },
+      { name: 'TypeScript', icon: SiTypescript, color: '#93c5fd' },
+      { name: 'Python', icon: SiPython, color: '#7dd3fc' },
+      { name: 'C++', icon: SiCplusplus, color: '#60a5fa' },
+      { name: 'C', icon: SiC, color: '#94a3b8' },
+      { name: 'Prolog', icon: VscCode, color: '#fbcfe8' },
     ],
   },
   {
-    title: 'DEVOPS & TOOLS',
+    title: 'Frontend & UI',
     skills: [
-      { name: 'Git',    icon: SiGit,        color: '#F05032' },
-      { name: 'GitHub', icon: SiGithub,     color: '#FFFFFF' },
-      { name: 'Docker', icon: SiDocker,     color: '#2496ED' },
-      { name: 'Maven',  icon: SiApachemaven, color: '#C71A22' },
+      { name: 'React', icon: SiReact, color: '#67e8f9' },
+      { name: 'Next.js', icon: SiNextdotjs, color: '#ffffff' },
+      { name: 'Tailwind CSS', icon: SiTailwindcss, color: '#38bdf8' },
+      { name: 'Angular', icon: SiAngular, color: '#f87171' },
+      { name: 'JavaScript', icon: SiJavascript, color: '#fde047' },
+      { name: 'HTML5', icon: SiHtml5, color: '#fb923c' },
+      { name: 'CSS3', icon: SiCss, color: '#60a5fa' },
     ],
   },
   {
-    title: 'TESTING & API TOOLS',
+    title: 'Bases de Datos & Cloud',
     skills: [
-      { name: 'JUnit 5',        icon: SiJunit5,  color: '#25A162' },
-      { name: 'Mockito',        icon: VscBeaker, color: '#FFFFFF' },
-      { name: 'Postman',        icon: SiPostman, color: '#FF6C37' },
-      { name: 'Swagger/OpenAPI',icon: SiSwagger, color: '#85EA2D' },
+      { name: 'PostgreSQL', icon: SiPostgresql, color: '#93c5fd' },
+      { name: 'MySQL', icon: SiMysql, color: '#7dd3fc' },
+      { name: 'Supabase', icon: SiSupabase, color: '#6ee7b7' },
+      { name: 'Docker', icon: SiDocker, color: '#60a5fa' },
+      { name: 'Vercel', icon: SiVercel, color: '#ffffff' },
+      { name: 'Firebase', icon: SiFirebase, color: '#fde047' },
     ],
   },
   {
-    title: 'DATABASES',
+    title: 'Testing, Herramientas & DevOps',
     skills: [
-      { name: 'PostgreSQL', icon: SiPostgresql, color: '#4169E1' },
-      { name: 'MySQL',      icon: SiMysql,      color: '#4479A1' },
-    ],
-  },
-  {
-    title: 'CLOUD & BaaS',
-    skills: [
-      { name: 'Supabase', icon: SiSupabase,  color: '#3ECF8E' },
-      { name: 'Neon',     icon: VscDatabase, color: '#00E599' },
-    ],
-  },
-  {
-    title: 'HOSTING',
-    skills: [
-      { name: 'Firebase', icon: SiFirebase, color: '#FFCA28' },
-      { name: 'Vercel',   icon: SiVercel,   color: '#FFFFFF', invertDark: true },
-    ],
-  },
-  {
-    title: 'BACKEND & OTHER LANGUAGES',
-    skills: [
-      { name: 'Java',      icon: FaJava,    color: '#ED8B00' },
-      { name: 'Node.js',   icon: SiNodedotjs, color: '#339933' },
-      { name: 'Ruby',      icon: SiRuby,    color: '#CC342D' },
-      { name: 'C',         icon: SiC,       color: '#A8B9CC' },
-      { name: 'C++',       icon: SiCplusplus, color: '#00599C' },
-      { name: 'Scheme',    icon: VscCode,   color: '#FFFFFF' },
-      { name: 'Smalltalk', icon: VscCode,   color: '#FFFFFF' },
-      { name: 'Prolog',    icon: VscCode,   color: '#FFFFFF' },
-    ],
-  },
-  {
-    title: 'FRONTEND',
-    skills: [
-      { name: 'HTML',       icon: SiHtml5,      color: '#E34F26' },
-      { name: 'CSS',        icon: SiCss,        color: '#1572B6' },
-      { name: 'JavaScript', icon: SiJavascript, color: '#F7DF1E' },
-      { name: 'TypeScript', icon: SiTypescript, color: '#3178C6' },
-    ],
-  },
-  {
-    title: 'DATA SCIENCE',
-    skills: [
-      { name: 'Python',     icon: SiPython,  color: '#3776AB' },
-      { name: 'NumPy',      icon: SiNumpy,   color: '#013243', invertDark: true },
-      { name: 'Pandas',     icon: SiPandas,  color: '#150458', invertDark: true },
-      { name: 'Matplotlib', icon: VscCode,   color: '#FFFFFF' },
-      { name: 'SciPy',      icon: SiScipy,   color: '#8CAAEE' },
-      { name: 'OpenCV',     icon: SiOpencv,  color: '#5C3EE8' },
-      { name: 'Jupyter',    icon: SiJupyter, color: '#F37626' },
+      { name: 'Git', icon: SiGit, color: '#f87171' },
+      { name: 'GitHub', icon: SiGithub, color: '#ffffff' },
+      { name: 'JUnit 5', icon: SiJunit5, color: '#86efac' },
+      { name: 'Mockito', icon: VscBeaker, color: '#c4b5fd' },
+      { name: 'Postman', icon: SiPostman, color: '#fb923c' },
+      { name: 'Swagger / OpenAPI', icon: SiSwagger, color: '#bef264' },
+      { name: 'Maven', icon: SiApachemaven, color: '#fca5a5' },
     ],
   },
 ];
 
 export default function TechStack() {
   return (
-    <section id="skills" className="py-20 px-4 sm:px-8 md:px-16 flex justify-center">
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.7 }}
-        className="max-w-5xl w-full glass rounded-2xl neon-glow relative overflow-hidden"
-      >
-        {/* Decorative top accent */}
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-400/60 to-transparent" />
-
-        {/* Corner orb */}
-        <div className="absolute top-0 right-0 w-64 h-64 bg-blue-600/8 blur-3xl rounded-full pointer-events-none" />
-
-        {/* Vertical scroll bar accent */}
-        <div className="absolute top-0 right-3 w-1 h-full bg-blue-600/10 rounded-full" />
-
-        {/* ===== Card Header (static) ===== */}
-        <div className="sticky top-0 z-10 px-6 pt-8 pb-6 md:px-10 glass-strong border-b border-blue-500/15">
-          <div className="flex items-center justify-between">
-            <div>
-              <h2 className="font-headline text-3xl md:text-4xl font-black text-white">
-                Tech{' '}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">
-                  Stack
-                </span>
-              </h2>
-              <p className="text-slate-400 text-sm mt-1">Scroll to explore all technologies</p>
-            </div>
-            <div className="text-right hidden sm:block">
-              <p className="text-2xl font-black text-white font-headline">
-                {skillCategories.reduce((sum, c) => sum + c.skills.length, 0)}
-              </p>
-              <p className="text-[10px] uppercase tracking-widest text-slate-500">Technologies</p>
-            </div>
-          </div>
+    <section id="skills" className="py-16 px-4 sm:px-8 md:px-12 max-w-5xl mx-auto">
+      {/* Header */}
+      <div className="mb-10">
+        <div className="flex items-center gap-2 text-xs font-mono text-cyan-300 uppercase tracking-widest mb-1.5">
+          <Cpu size={14} />
+          <span>Habilidades & Tecnologías</span>
         </div>
+        <h2 className="font-headline font-bold text-4xl sm:text-5xl text-white">
+          Stack <span className="title-gradient italic">Tecnológico</span>
+        </h2>
+      </div>
 
-        {/* ===== Scrollable Skills Body ===== */}
-        <div
-          className="skill-scroll overflow-y-auto px-6 py-6 md:px-10 md:py-8 space-y-10"
-          style={{ maxHeight: '520px' }}
-        >
-          {skillCategories.map((category, catIdx) => (
-            <div key={category.title}>
-              {/* Category label */}
-              <div className="flex items-center gap-3 mb-5">
-                <div className="w-1 h-5 rounded-full bg-gradient-to-b from-blue-400 to-cyan-500" />
-                <h3 className="font-sans text-[11px] md:text-xs font-bold text-slate-400 tracking-[0.18em] uppercase">
-                  {category.title}
-                </h3>
-                <div className="flex-1 h-px bg-slate-800/70" />
-              </div>
+      {/* Categories Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+        {skillCategories.map((cat, catIdx) => (
+          <motion.div
+            key={cat.title}
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: catIdx * 0.08, duration: 0.4 }}
+            className="liquid-glass-card rounded-2xl p-6"
+          >
+            <h3 className="font-headline font-bold text-white text-lg tracking-wide mb-4 pb-2 border-b border-[#1e3a8a]/70 flex items-center justify-between">
+              <span>{cat.title}</span>
+              <span className="text-[11px] font-sans font-medium text-cyan-300">{cat.skills.length} skills</span>
+            </h3>
 
-              {/* Skills grid */}
-              <div className="flex flex-wrap gap-3">
-                {category.skills.map((skill, idx) => (
-                  <motion.div
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
+              {cat.skills.map((skill) => {
+                const Icon = skill.icon;
+                return (
+                  <div
                     key={skill.name}
-                    initial={{ opacity: 0, scale: 0.85 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: catIdx * 0.03 + idx * 0.04, duration: 0.4 }}
-                    className="
-                      group glass-subtle
-                      w-[78px] h-[78px] sm:w-[96px] sm:h-[96px]
-                      shrink-0 rounded-xl
-                      hover:border-blue-400/50 hover:bg-blue-500/10
-                      hover:shadow-[0_0_18px_rgba(59,130,246,0.25)]
-                      transition-all duration-300 cursor-default
-                      flex flex-col items-center justify-center gap-2
-                    "
+                    className="flex items-center gap-2.5 p-2.5 rounded-xl liquid-glass-subtle hover:border-cyan-400/50 transition-all group"
                   >
-                    <div
-                      style={{ color: skill.invertDark ? '#FFFFFF' : skill.color }}
-                      className="transition-transform duration-300 group-hover:scale-115 group-hover:drop-shadow-[0_0_6px_currentColor]"
-                    >
-                      <skill.icon className="w-6 h-6 sm:w-8 sm:h-8" />
-                    </div>
-                    <span className="font-sans font-semibold text-slate-400 group-hover:text-slate-200 text-[8px] sm:text-[10px] tracking-wide text-center px-1 transition-colors duration-300 leading-tight">
+                    <Icon
+                      size={17}
+                      style={{ color: skill.color }}
+                      className="shrink-0 transition-transform group-hover:scale-110 drop-shadow-[0_2px_4px_rgba(0,0,0,0.4)]"
+                    />
+                    <span className="text-xs text-slate-200 font-sans font-medium truncate group-hover:text-cyan-200">
                       {skill.name}
                     </span>
-                  </motion.div>
-                ))}
-              </div>
+                  </div>
+                );
+              })}
             </div>
-          ))}
-
-          {/* Bottom spacer */}
-          <div className="h-2" />
-        </div>
-
-        {/* Fade at scroll bottom */}
-        <div className="pointer-events-none h-8 bg-gradient-to-t from-slate-950/80 to-transparent rounded-b-2xl" />
-      </motion.div>
+          </motion.div>
+        ))}
+      </div>
     </section>
   );
 }

@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { motion } from 'motion/react';
-import { Terminal } from 'lucide-react';
+import { Terminal, Copy, Check } from 'lucide-react';
 
 type TerminalLine =
   | { type: 'command'; text: string }
@@ -11,45 +11,57 @@ type TerminalLine =
 
 const script: TerminalLine[] = [
   { type: 'command', text: 'whoami' },
-  { type: 'output',  text: 'nicolás melgratti — information systems engineer' },
+  { type: 'output', text: 'nicolás melgratti — analista y desarrollador universitario en sistemas (utn frsf)' },
   { type: 'blank' },
-  { type: 'command', text: 'ls skills/' },
-  { type: 'output',  text: 'java/   spring-boot/   react/   next.js/   postgresql/   docker/' },
+  { type: 'command', text: 'cat featured_projects.json' },
+  { type: 'output', text: '1. SicroCare — Sistema de control médico, signos vitales y alarmas de medicación' },
+  { type: 'output', text: '2. Emisión Licencias — TP UTN Scrum híbrido con backend Java Spring Boot' },
+  { type: 'output', text: '3. Zinerva — E-commerce en Vercel con Mercado Pago Checkout Pro (E2E) & PAQ.AR' },
   { type: 'blank' },
-  { type: 'command', text: 'cat interests.txt' },
-  { type: 'output',  text: 'software architecture · backend development · agile methodologies' },
-  { type: 'blank' },
-  { type: 'command', text: 'git log --oneline -3' },
-  { type: 'output',  text: 'a3f9c21  feat: full-stack e-commerce with PAQ.AR shipping integration' },
-  { type: 'output',  text: '8b1d047  feat: hardware simulator in SWI-Prolog with IRQ/IO logic' },
-  { type: 'output',  text: 'c02e8fa  feat: steganography engine using LSB + 2D Fourier transform' },
-  { type: 'blank' },
-  { type: 'command', text: 'echo $STATUS' },
-  { type: 'output',  text: 'open to work · santa fe, argentina · remote-friendly' },
+  { type: 'command', text: 'git status' },
+  { type: 'output', text: 'On branch main · working tree clean · open to work' },
 ];
-
-// Typing speed (ms per character) for commands
-const CHAR_DELAY = 45;
-// Pause before output appears (ms)
-const OUTPUT_DELAY = 200;
-// Pause between script lines (ms)
-const LINE_PAUSE = 420;
 
 export default function TerminalSection() {
   const [visibleLines, setVisibleLines] = useState<TerminalLine[]>([]);
   const [typingText, setTypingText] = useState('');
   const [isTyping, setIsTyping] = useState(false);
+  const [copied, setCopied] = useState(false);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const hasStarted = useRef(false);
 
-  // Auto-scroll to bottom as lines appear
+  const runScript = useCallback(async () => {
+    const sleep = (ms: number) => new Promise(r => setTimeout(r, ms));
+
+    for (const line of script) {
+      if (line.type === 'command') {
+        setIsTyping(true);
+        let typed = '';
+        for (const char of line.text) {
+          typed += char;
+          setTypingText(typed);
+          await sleep(35);
+        }
+        setIsTyping(false);
+        setTypingText('');
+        await sleep(150);
+        setVisibleLines(prev => [...prev, line]);
+      } else if (line.type === 'output') {
+        await sleep(60);
+        setVisibleLines(prev => [...prev, line]);
+      } else {
+        setVisibleLines(prev => [...prev, line]);
+      }
+      await sleep(250);
+    }
+  }, []);
+
   useEffect(() => {
     if (scrollContainerRef.current) {
       scrollContainerRef.current.scrollTop = scrollContainerRef.current.scrollHeight;
     }
   }, [visibleLines, typingText]);
 
-  // IntersectionObserver to start the animation when in view
   useEffect(() => {
     const container = document.getElementById('terminal');
     if (!container) return;
@@ -60,131 +72,98 @@ export default function TerminalSection() {
           runScript();
         }
       },
-      { threshold: 0.3 }
+      { threshold: 0.2 }
     );
     observer.observe(container);
     return () => observer.disconnect();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [runScript]);
 
-  async function sleep(ms: number) {
-    return new Promise(r => setTimeout(r, ms));
-  }
-
-  async function runScript() {
-    for (const line of script) {
-      if (line.type === 'command') {
-        setIsTyping(true);
-        let typed = '';
-        for (const char of line.text) {
-          typed += char;
-          setTypingText(typed);
-          await sleep(CHAR_DELAY + Math.random() * 20);
-        }
-        setIsTyping(false);
-        setTypingText('');
-        await sleep(OUTPUT_DELAY);
-        setVisibleLines(prev => [...prev, line]);
-      } else if (line.type === 'output') {
-        await sleep(80);
-        setVisibleLines(prev => [...prev, line]);
-      } else {
-        setVisibleLines(prev => [...prev, line]);
-      }
-      await sleep(LINE_PAUSE);
-    }
-  }
+  const handleCopyConsole = () => {
+    const textToCopy = script
+      .map(line => (line.type === 'command' ? `$ ${line.text}` : line.type === 'output' ? line.text : ''))
+      .join('\n');
+    navigator.clipboard.writeText(textToCopy);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   return (
-    <section id="terminal" className="py-20 px-4 sm:px-8 md:px-16">
-      {/* Section Header */}
+    <section id="terminal" className="py-16 px-4 sm:px-8 md:px-12 max-w-5xl mx-auto">
+      {/* Header */}
+      <div className="mb-8">
+        <div className="flex items-center gap-2 text-xs font-mono text-cyan-300 uppercase tracking-widest mb-1.5">
+          <Terminal size={14} />
+          <span>Consola Interactiva</span>
+        </div>
+        <h2 className="font-headline font-bold text-4xl sm:text-5xl text-white">
+          Developer <span className="title-gradient italic">Console</span>
+        </h2>
+      </div>
+
+      {/* Clean Terminal Box */}
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 15 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="flex items-end gap-5 mb-10 max-w-5xl mx-auto"
+        transition={{ duration: 0.5 }}
+        className="glass-terminal rounded-2xl overflow-hidden shadow-2xl"
       >
-        <div>
-          <h2 className="font-headline text-3xl md:text-4xl font-black text-white">
-            Interactive{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-violet-400">
-              Terminal
-            </span>
-          </h2>
-          <div className="w-12 h-0.5 bg-gradient-to-r from-cyan-400 to-violet-400 rounded-full mt-3" />
-        </div>
-        <span className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1 glass-violet-subtle rounded-full text-[10px] font-bold tracking-widest text-violet-300 uppercase border border-violet-500/20 mb-0.5">
-          <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
-          Live session
-        </span>
-      </motion.div>
-
-      {/* Terminal Window */}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.7, delay: 0.15 }}
-        className="max-w-5xl mx-auto glass-terminal rounded-2xl overflow-hidden neon-glow-cyan"
-      >
-        {/* Title Bar */}
-        <div className="flex items-center gap-3 px-5 py-3.5 bg-white/[0.03] border-b border-cyan-400/10">
-          {/* Traffic light dots */}
-          <div className="flex gap-2">
-            <span className="w-3 h-3 rounded-full bg-red-500/80 shadow-[0_0_6px_rgba(239,68,68,0.5)]" />
-            <span className="w-3 h-3 rounded-full bg-yellow-400/80 shadow-[0_0_6px_rgba(234,179,8,0.5)]" />
-            <span className="w-3 h-3 rounded-full bg-emerald-400/80 shadow-[0_0_6px_rgba(52,211,153,0.5)]" />
+        {/* Titlebar */}
+        <div className="flex items-center justify-between px-5 py-3 bg-slate-950/90 border-b border-[#1e3a8a]/70">
+          <div className="flex items-center gap-2">
+            <span className="w-3 h-3 rounded-full bg-red-500/80 shadow-[0_0_8px_rgba(239,68,68,0.4)]" />
+            <span className="w-3 h-3 rounded-full bg-yellow-500/80 shadow-[0_0_8px_rgba(234,179,8,0.4)]" />
+            <span className="w-3 h-3 rounded-full bg-emerald-500/80 shadow-[0_0_8px_rgba(16,185,129,0.4)]" />
           </div>
-          <div className="flex-1 flex justify-center">
-            <span className="flex items-center gap-2 text-[11px] font-mono text-slate-400">
-              <Terminal size={12} className="text-cyan-400" />
-              bash — nicolás@portfolio:~
-            </span>
-          </div>
-        </div>
-
-        {/* Terminal Body */}
-        <div className="relative overflow-hidden">
-          {/* CRT scan line */}
-          <div className="scan-line" />
-
-          <div
-            ref={scrollContainerRef}
-            className="overflow-y-auto px-6 py-5 font-mono text-sm leading-7 custom-scrollbar"
-            style={{ maxHeight: '360px', minHeight: '260px' }}
+          <span className="text-[11px] font-mono text-cyan-300">
+            bash — nicolas@portfolio:~
+          </span>
+          <button
+            onClick={handleCopyConsole}
+            className="text-slate-400 hover:text-white p-1.5 rounded-lg transition-colors text-xs flex items-center gap-1 cursor-pointer liquid-glass-subtle"
+            title="Copiar texto"
           >
-            {visibleLines.map((line, i) => (
-              <div key={i}>
-                {line.type === 'command' && (
-                  <div className="flex items-center gap-2">
-                    <span className="text-violet-400 select-none">❯</span>
-                    <span className="text-cyan-300">{line.text}</span>
-                  </div>
-                )}
-                {line.type === 'output' && (
-                  <div className="pl-5 text-emerald-300/85 text-[13px]">{line.text}</div>
-                )}
-                {line.type === 'blank' && <div className="h-2" />}
-              </div>
-            ))}
+            {copied ? <Check size={13} className="text-emerald-400" /> : <Copy size={13} />}
+          </button>
+        </div>
 
-            {/* Live typing line */}
-            {isTyping && (
-              <div className="flex items-center gap-2">
-                <span className="text-violet-400 select-none">❯</span>
-                <span className="text-cyan-300">{typingText}</span>
-              </div>
-            )}
+        {/* Content */}
+        <div
+          ref={scrollContainerRef}
+          className="p-6 font-mono text-xs sm:text-sm leading-relaxed overflow-y-auto"
+          style={{ minHeight: '220px', maxHeight: '320px' }}
+        >
+          {visibleLines.map((line, i) => (
+            <div key={i}>
+              {line.type === 'command' && (
+                <div className="flex items-center gap-2 text-cyan-200 font-medium">
+                  <span className="text-indigo-400 select-none">❯</span>
+                  <span>{line.text}</span>
+                </div>
+              )}
+              {line.type === 'output' && (
+                <div className="pl-4 text-emerald-300 text-xs sm:text-[13px] py-0.5 font-normal">
+                  {line.text}
+                </div>
+              )}
+              {line.type === 'blank' && <div className="h-2" />}
+            </div>
+          ))}
 
-            {/* Idle cursor (shown when not typing and script still running or finished) */}
-            {!isTyping && (
-              <div className="flex items-center gap-2 mt-0.5">
-                <span className="text-violet-400 select-none">❯</span>
-                <span className="terminal-cursor" />
-              </div>
-            )}
-          </div>
+          {isTyping && (
+            <div className="flex items-center gap-2 text-cyan-200">
+              <span className="text-indigo-400 select-none">❯</span>
+              <span>{typingText}</span>
+              <span className="terminal-cursor" />
+            </div>
+          )}
+
+          {!isTyping && (
+            <div className="flex items-center gap-2 mt-1">
+              <span className="text-indigo-400 select-none">❯</span>
+              <span className="terminal-cursor" />
+            </div>
+          )}
         </div>
       </motion.div>
     </section>

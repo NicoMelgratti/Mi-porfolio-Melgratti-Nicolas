@@ -1,15 +1,17 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { User, BrainCircuit, Terminal, GraduationCap, Award, Mail, Github, Linkedin, FolderGit2 } from 'lucide-react';
+import Image from 'next/image';
+import { User, Cpu, Terminal, GraduationCap, Award, Mail, Github, Linkedin, FolderGit2, Briefcase } from 'lucide-react';
 
 const navItems = [
-  { id: 'profile',        label: 'Profile',        icon: User },
-  { id: 'skills',         label: 'Skills',          icon: BrainCircuit },
-  { id: 'terminal',       label: 'Terminal',        icon: Terminal },
-  { id: 'projects',       label: 'Projects',        icon: FolderGit2 },
-  { id: 'education',      label: 'Education',       icon: GraduationCap },
-  { id: 'certifications', label: 'Certifications',  icon: Award },
+  { id: 'profile',        label: 'Perfil',          icon: User },
+  { id: 'skills',         label: 'Tecnologías',     icon: Cpu },
+  { id: 'projects',       label: 'Proyectos',       icon: FolderGit2 },
+  { id: 'experience',     label: 'Experiencia',     icon: Briefcase },
+  { id: 'terminal',       label: 'Consola',         icon: Terminal },
+  { id: 'education',      label: 'Educación',       icon: GraduationCap },
+  { id: 'certifications', label: 'Certificados',    icon: Award },
 ];
 
 export default function Sidebar() {
@@ -17,7 +19,7 @@ export default function Sidebar() {
 
   useEffect(() => {
     const getActive = () => {
-      const viewportOffset = window.innerHeight * 0.35; // trigger zone: 35% from top
+      const viewportOffset = window.innerHeight * 0.35;
       let currentId = navItems[0].id;
       let minDistance = Infinity;
 
@@ -25,7 +27,6 @@ export default function Sidebar() {
         const el = document.getElementById(id);
         if (!el) return;
         const rect = el.getBoundingClientRect();
-        // Distance from the trigger zone to the section's top edge
         const distance = Math.abs(rect.top - viewportOffset);
         if (rect.top <= viewportOffset && distance < minDistance) {
           minDistance = distance;
@@ -37,42 +38,38 @@ export default function Sidebar() {
     };
 
     window.addEventListener('scroll', getActive, { passive: true });
-    getActive(); // run once on mount
+    getActive();
     return () => window.removeEventListener('scroll', getActive);
   }, []);
 
   return (
-    <aside className="h-screen w-64 fixed left-0 top-0 hidden md:flex flex-col z-40 overflow-hidden">
-      {/* Glass Background Layer */}
-      <div className="absolute inset-0 glass-strong border-r border-blue-500/20 shadow-[4px_0_40px_rgba(37,99,235,0.12)]" />
-
-      {/* Decorative orb */}
-      <div className="absolute -top-20 -left-10 w-56 h-56 rounded-full bg-blue-600/10 blur-3xl pointer-events-none mesh-orb" />
-
-      <div className="relative flex flex-col h-full">
+    <aside className="h-screen w-64 fixed left-0 top-0 hidden md:flex flex-col z-40 liquid-glass-navbar border-r border-[#1e3a8a]/70">
+      <div className="flex flex-col h-full">
         {/* Profile Header */}
-        <div className="p-7 flex flex-col items-center text-center border-b border-blue-500/15">
-          <div className="relative mb-4">
-            {/* Glowing ring */}
-            <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-blue-500 to-cyan-400 blur-sm opacity-60" />
-            <div className="relative w-24 h-24 rounded-full overflow-hidden border-2 border-blue-400/40 p-0.5 bg-slate-900">
-              <img
+        <div className="p-6 flex flex-col items-center text-center border-b border-[#1e3a8a]/60">
+          <div className="relative mb-3">
+            <div className="w-20 h-20 rounded-2xl overflow-hidden border-2 border-[#1e3a8a] p-0.5 bg-slate-950 shadow-lg">
+              <Image
                 src="/perfil.jpg"
                 alt="Nicolás Melgratti"
-                className="w-full h-full object-cover rounded-full"
+                width={80}
+                height={80}
+                className="w-full h-full object-cover rounded-xl grayscale hover:grayscale-0 transition-all duration-500"
               />
             </div>
           </div>
-          <h1 className="text-lg font-black text-white font-headline leading-tight">Nicolás Melgratti</h1>
-          <p className="text-[10px] text-cyan-400/80 font-sans tracking-[0.18em] mt-1.5 uppercase">Information Systems Eng.</p>
-          <div className="mt-3 flex items-center gap-1.5">
+          <h1 className="text-xl font-headline font-bold text-white tracking-tight leading-tight mt-1">
+            Nicolás Melgratti
+          </h1>
+          <p className="text-[11px] text-cyan-300 font-sans font-medium tracking-wide mt-0.5">Full-Stack Engineer</p>
+          <div className="mt-2.5 flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-blue-950/80 border border-[#1e3a8a]">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-            <span className="text-[10px] text-emerald-400 font-semibold tracking-wide">Available for work</span>
+            <span className="text-[10px] text-emerald-300 font-sans font-medium">Disponible</span>
           </div>
         </div>
 
         {/* Navigation */}
-        <nav className="flex-1 py-4 overflow-y-auto">
+        <nav className="flex-1 py-4 px-3 space-y-1.5 overflow-y-auto">
           {navItems.map((item) => {
             const isActive = active === item.id;
             return (
@@ -81,32 +78,16 @@ export default function Sidebar() {
                 href={`#${item.id}`}
                 onClick={() => setActive(item.id)}
                 className={`
-                  group relative flex items-center gap-3 px-6 py-3.5
-                  text-sm font-sans tracking-wide transition-all duration-300
+                  flex items-center gap-3 px-4 py-2.5 rounded-xl
+                  font-sans font-medium text-xs tracking-wide transition-all duration-200
                   ${isActive
-                    ? 'text-white'
-                    : 'text-slate-400 hover:text-white'}
+                    ? 'liquid-glass-subtle text-cyan-200 border border-blue-500/60 shadow-[0_0_12px_rgba(30,58,138,0.4)]'
+                    : 'text-slate-400 hover:text-white hover:bg-slate-900/50'}
                 `}
               >
-                {/* Active/hover left indicator */}
-                <span
-                  className={`
-                    absolute left-0 top-1/2 -translate-y-1/2 w-0.5 h-7 rounded-r-full transition-all duration-300
-                    ${isActive ? 'opacity-100' : 'opacity-0 group-hover:opacity-60'}
-                  `}
-                  style={isActive
-                    ? { background: 'linear-gradient(to bottom, #22d3ee, #7c3aed)' }
-                    : { background: '#3b82f6' }}
-                />
-
-                {/* Active bg pill */}
-                {isActive && (
-                  <span className="absolute inset-x-3 inset-y-1 rounded-xl glass-subtle border-blue-500/25 neon-glow-sm -z-10" />
-                )}
-
                 <item.icon
-                  size={17}
-                  className={`transition-colors duration-300 ${isActive ? 'text-blue-400' : 'text-slate-500 group-hover:text-blue-400'}`}
+                  size={16}
+                  className={isActive ? 'text-cyan-300' : 'text-blue-400/80'}
                 />
                 {item.label}
               </a>
@@ -114,19 +95,15 @@ export default function Sidebar() {
           })}
         </nav>
 
-        {/* Footer Contact */}
-        <div className="p-5 border-t border-blue-500/15 space-y-3">
-          <div className="flex items-center gap-2.5 text-xs text-slate-400">
-            <Mail size={13} className="text-blue-400/70 shrink-0" />
-            <span className="truncate">nicomelgratti@gmail.com</span>
-          </div>
-
-          <div className="flex gap-3 mt-1">
+        {/* Footer Quick Actions */}
+        <div className="p-4 border-t border-[#1e3a8a]/60 space-y-2.5">
+          <div className="flex gap-2">
             <a
               href="https://github.com/NicoMelgratti"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 glass-subtle rounded-lg text-slate-400 hover:text-white hover:border-blue-400/40 transition-all"
+              className="flex-1 py-2 liquid-glass-subtle rounded-xl text-slate-300 hover:text-cyan-300 hover:border-blue-400/60 transition-all flex justify-center items-center"
+              aria-label="GitHub"
             >
               <Github size={15} />
             </a>
@@ -134,7 +111,8 @@ export default function Sidebar() {
               href="https://www.linkedin.com/in/nicolas-gustavo-melgratti-32b61b248/"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 glass-subtle rounded-lg text-slate-400 hover:text-white hover:border-blue-400/40 transition-all"
+              className="flex-1 py-2 liquid-glass-subtle rounded-xl text-slate-300 hover:text-cyan-300 hover:border-blue-400/60 transition-all flex justify-center items-center"
+              aria-label="LinkedIn"
             >
               <Linkedin size={15} />
             </a>
@@ -145,9 +123,10 @@ export default function Sidebar() {
               e.preventDefault();
               window.dispatchEvent(new CustomEvent('openContactModal'));
             }}
-            className="mt-1 w-full py-2.5 btn-cv text-white font-bold rounded-xl text-sm text-center flex justify-center items-center gap-2 active:scale-95 cursor-pointer"
+            className="w-full py-2.5 liquid-glass-btn text-white font-sans font-semibold text-xs tracking-wide text-center flex justify-center items-center gap-2 active:scale-95 cursor-pointer rounded-xl shadow-md"
           >
-            Hire Me
+            <Mail size={14} />
+            Contactar
           </button>
         </div>
       </div>

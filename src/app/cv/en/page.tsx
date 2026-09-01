@@ -3,11 +3,10 @@
 import React from 'react';
 import { Printer } from 'lucide-react';
 
-/* ── Section heading ─────────────────────────────────────────── */
 function SectionTitle({ children }: { children: React.ReactNode }) {
   return (
-    <div className="mb-3 mt-6 border-b-2 border-slate-800 pb-1">
-      <h2 className="text-sm font-black tracking-widest uppercase text-slate-900">
+    <div className="mb-2 mt-4 border-b border-slate-700 pb-0.5">
+      <h2 className="text-xs font-black tracking-wider uppercase text-slate-900">
         {children}
       </h2>
     </div>
@@ -16,97 +15,114 @@ function SectionTitle({ children }: { children: React.ReactNode }) {
 
 export default function ResumeEN() {
   return (
-    <div className="bg-slate-100 min-h-screen py-10 print:py-0 w-full flex justify-center text-slate-800 selection:bg-slate-200">
+    <div className="bg-slate-100 min-h-screen py-8 print:py-0 w-full flex justify-center text-slate-800 selection:bg-slate-200 font-sans">
       <div className="fixed top-6 right-6 flex flex-col gap-3 print:hidden z-50">
         <button
           onClick={() => window.print()}
-          className="bg-slate-800 hover:bg-slate-900 text-white font-bold py-2 px-5 rounded shadow-lg flex items-center gap-2 text-sm"
+          className="bg-slate-900 hover:bg-slate-800 text-white font-bold py-2.5 px-5 rounded-lg shadow-lg flex items-center gap-2 text-sm cursor-pointer transition-all active:scale-95"
         >
-          <Printer size={16} /> Print PDF (ATS)
+          <Printer size={16} /> Print / Save as PDF
         </button>
       </div>
 
-      {/* A4 Sheet - Single Column ATS Optimized */}
-      <div className="bg-white w-full max-w-[210mm] min-h-[297mm] shadow-xl print:shadow-none print:w-full print:max-w-none print:min-h-0 overflow-hidden flex flex-col relative px-12 py-10">
+      {/* A4 Sheet - ATS Optimized Single Column */}
+      <div className="bg-white w-full max-w-[210mm] min-h-[297mm] shadow-xl print:shadow-none print:w-full print:max-w-none print:min-h-0 overflow-hidden flex flex-col relative px-10 py-8 print:px-8 print:py-6">
         
         {/* HEADER */}
-        <header className="text-center mb-6">
-          <h1 className="text-3xl font-black text-slate-900 mb-2 uppercase tracking-tight">Nicolás Melgratti</h1>
-          <p className="text-sm font-bold text-slate-700 uppercase tracking-widest mb-2">
-            Full Stack Developer | Software Engineer
+        <header className="text-center mb-3">
+          <h1 className="text-2xl font-black text-slate-900 mb-1 uppercase tracking-tight">Nicolás Melgratti</h1>
+          <p className="text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
+            Full Stack Developer | Information Systems Analyst (Degree in Progress) & Engineer
           </p>
-          <p className="text-xs text-slate-600 flex justify-center items-center gap-3 flex-wrap">
+          <p className="text-[11px] text-slate-600 flex justify-center items-center gap-2.5 flex-wrap font-medium">
             <span>Santa Fe, Argentina</span>
-            <span>|</span>
+            <span>•</span>
             <span>nicomelgratti@gmail.com</span>
-            <span>|</span>
+            <span>•</span>
             <span>+54 9 3497 657247</span>
-            <span>|</span>
-            <a href="https://linkedin.com/in/nicolas-gustavo-melgratti-32b61b248">linkedin.com/in/nicolas-gustavo-melgratti</a>
-            <span>|</span>
-            <a href="https://github.com/NicoMelgratti">github.com/NicoMelgratti</a>
+            <span>•</span>
+            <a href="https://linkedin.com/in/nicolas-gustavo-melgratti-32b61b248" className="hover:underline text-slate-800">linkedin.com/in/nicolas-gustavo-melgratti</a>
+            <span>•</span>
+            <a href="https://github.com/NicoMelgratti" className="hover:underline text-slate-800">github.com/NicoMelgratti</a>
           </p>
         </header>
 
         {/* BODY */}
-        <div className="flex-1 text-sm text-slate-800 space-y-2">
+        <div className="flex-1 text-[11.5px] leading-relaxed text-slate-800 space-y-2">
           
           {/* Summary */}
           <section>
             <SectionTitle>Professional Summary</SectionTitle>
-            <p className="leading-relaxed text-justify">
-              Exceptional Full Stack Developer specializing in scalable architectures with Java / Spring Boot and React / Next.js. I design and launch end-to-end technical solutions that solve critical business problems, combining academic rigor in Systems Engineering with proven production delivery. I drive system performance, Search Engine Optimization (SEO), and code maintainability through strict application of Clean Code and Object-Oriented Programming (OOP).
+            <p className="leading-snug text-justify text-slate-700">
+              Full Stack Developer and University Information Systems Analyst (UTN FRSF) with a strong foundation in software engineering, design patterns, and Agile methodologies (Scrum). Specialized in architecting and delivering scalable backend services with <strong>Java & Spring Boot</strong>, as well as high-performance modern web frontends using <strong>React, Next.js, and TypeScript</strong>. Proven experience delivering end-to-end solutions, from relational database design to intuitive user interfaces and cloud deployment.
             </p>
           </section>
 
           {/* Technical Skills */}
           <section>
             <SectionTitle>Technical Skills</SectionTitle>
-            <div className="space-y-1.5">
-              <p><strong>Programming Languages:</strong> Java, TypeScript, JavaScript, Node.js, SQL.</p>
-              <p><strong>Frameworks & Libraries:</strong> Spring Boot, React, Next.js, Tailwind CSS.</p>
-              <p><strong>Databases & Cloud:</strong> PostgreSQL, Docker, Multi-tenant Architectures.</p>
-              <p><strong>Tools & Methodologies:</strong> Git, Continuous Integration / Continuous Deployment (CI/CD), Application Programming Interface (API) REST, Clean Code, SOLID, Agile, Scrum.</p>
+            <div className="space-y-1 text-slate-700">
+              <p><strong>Languages:</strong> Java, TypeScript, JavaScript, SQL, Python, C++, C, SWI-Prolog.</p>
+              <p><strong>Frameworks & Libraries:</strong> Spring Boot, React, Next.js, Angular, Tailwind CSS, Node.js.</p>
+              <p><strong>Databases & Cloud:</strong> PostgreSQL, MySQL, Supabase, Docker, Vercel, Firebase.</p>
+              <p><strong>Tools & Practices:</strong> Git, GitHub, RESTful APIs, Clean Architecture, SOLID, JUnit 5, Mockito, Postman, Swagger/OpenAPI, Hybrid Scrum, CI/CD.</p>
             </div>
           </section>
 
-          {/* Professional Experience */}
+          {/* Featured Projects & Development Experience */}
           <section>
-            <SectionTitle>Professional Experience</SectionTitle>
+            <SectionTitle>Featured Projects & Development Experience</SectionTitle>
             
-            <div className="mb-5">
-              <div className="flex justify-between font-bold text-slate-900 mb-1">
-                <h3>Full Stack Developer — Zinerva (E-commerce)</h3>
-                <span>Jan 2026 – Present</span>
+            {/* SicroCare */}
+            <div className="mb-2.5">
+              <div className="flex justify-between items-baseline font-bold text-slate-900">
+                <h3 className="text-xs">SicroCare — Medical Care & Remote Assistance System (Degree Capstone Project)</h3>
+                <span className="text-[10px] text-slate-600 font-mono">2025 – 2026</span>
               </div>
-              <p className="italic text-slate-700 mb-2">Next.js 15, React 18, PostgreSQL, REST API</p>
-              <ul className="list-disc pl-5 space-y-1">
-                <li>Achieved the launch of a high-performance e-commerce platform, generating a 40% improvement in load times (sub-2s) that boosts user retention, by implementing Server-Side Rendering (SSR) with Next.js.</li>
-                <li>Achieved end-to-end automation of the logistics process, generating savings of 10+ hours per week in manual management, by integrating the Correo Argentino API for real-time quoting.</li>
-                <li>Achieved the structuring of the core sales system, generating support for 500+ SKUs and an estimated 25% increase in conversion rate, by creating an optimized checkout flow (UX).</li>
+              <p className="italic text-[10.5px] text-slate-600 mb-1">Java, Spring Boot, React, TypeScript, PostgreSQL, REST API</p>
+              <ul className="list-disc pl-4 space-y-0.5 text-slate-700">
+                <li>Architected an end-to-end healthcare system for elderly individuals and people with disabilities, enabling real-time vital sign tracking and analysis.</li>
+                <li>Engineered an intelligent medication alarm engine and automated clinical reporting module for healthcare professionals.</li>
+                <li>Built a decoupled client-server architecture with secured REST APIs and relational persistence in PostgreSQL.</li>
               </ul>
             </div>
 
-            <div className="mb-5">
-              <div className="flex justify-between font-bold text-slate-900 mb-1">
-                <h3>Backend Developer / Software Architect — Freelance</h3>
-                <span>Jan 2025 – Dec 2025</span>
+            {/* Sistema de Emisión de Licencias */}
+            <div className="mb-2.5">
+              <div className="flex justify-between items-baseline font-bold text-slate-900">
+                <h3 className="text-xs">Driver&apos;s License Issuance System (UTN Academic Project)</h3>
+                <span className="text-[10px] text-slate-600 font-mono">2024 – 2025</span>
               </div>
-              <p className="italic text-slate-700 mb-2">Java, Spring Boot 3, React, PostgreSQL</p>
-              <ul className="list-disc pl-5 space-y-1">
-                <li>Achieved the creation of a B2B SaaS product from scratch, generating a secure ecosystem with 100% data isolation for multiple clients, by utilizing PostgreSQL schema policies and Role-Based Access Control (RBAC).</li>
-                <li>Achieved the modernization of the transaction infrastructure, generating the capacity to process hundreds of concurrent bookings without latency, by engineering 15+ REST APIs following SOLID principles.</li>
+              <p className="italic text-[10.5px] text-slate-600 mb-1">Java, Spring Boot, React/Angular, PostgreSQL, Hybrid Scrum Methodology</p>
+              <ul className="list-disc pl-4 space-y-0.5 text-slate-700">
+                <li>Led software development for an institutional driver&apos;s license issuance platform applying hybrid Scrum methodology with iterative sprints.</li>
+                <li>Implemented core business rules for validity calculations, audit logging, medical examination tracking, and role-based access control (RBAC).</li>
               </ul>
             </div>
 
-            <div className="mb-5">
-              <div className="flex justify-between font-bold text-slate-900 mb-1">
-                <h3>Software Developer — Academic Project (UTN)</h3>
-                <span>Mar 2024 – Nov 2024</span>
+            {/* Zinerva */}
+            <div className="mb-2.5">
+              <div className="flex justify-between items-baseline font-bold text-slate-900">
+                <h3 className="text-xs">Zinerva — Full-Stack E-commerce Platform (Production on Vercel)</h3>
+                <span className="text-[10px] text-slate-600 font-mono">2025 – Present</span>
               </div>
-              <p className="italic text-slate-700 mb-2">SWI-Prolog, Logic Programming</p>
-              <ul className="list-disc pl-5 space-y-1">
-                <li>Achieved automated hardware validation, generating a 100% reduction in compatibility conflict errors (IRQ), by architecting a declarative constraint-satisfaction engine in SWI-Prolog.</li>
+              <p className="italic text-[10.5px] text-slate-600 mb-1">Next.js 15, React, PostgreSQL, Mercado Pago Checkout Pro (E2E), Correo Argentino API (PAQ.AR), Vercel</p>
+              <ul className="list-disc pl-4 space-y-0.5 text-slate-700">
+                <li>Built and deployed on <strong>Vercel</strong> a high-performance e-commerce platform using Next.js Server-Side Rendering (SSR) achieving sub-second load times and high SEO scores.</li>
+                <li>Integrated <strong>Mercado Pago Checkout Pro</strong> payment gateway with End-to-End (E2E) encryption, ensuring seamless and secure payment processing.</li>
+                <li>Automated shipping quoting and dispatching workflows via real-time integration with national postal service API (Correo Argentino) and custom matrix inventory.</li>
+              </ul>
+            </div>
+
+            {/* Other Projects */}
+            <div>
+              <div className="flex justify-between items-baseline font-bold text-slate-900">
+                <h3 className="text-xs">Hotel Management System & Hardware Simulator</h3>
+                <span className="text-[10px] text-slate-600 font-mono">UTN Academic</span>
+              </div>
+              <p className="italic text-[10.5px] text-slate-600 mb-0.5">Java, React, SWI-Prolog, Python</p>
+              <ul className="list-disc pl-4 space-y-0.5 text-slate-700">
+                <li>Developed full hotel occupancy and billing workflows in Java + React, and declarative hardware constraint solvers in SWI-Prolog.</li>
               </ul>
             </div>
           </section>
@@ -114,19 +130,28 @@ export default function ResumeEN() {
           {/* Education */}
           <section>
             <SectionTitle>Education</SectionTitle>
-            <div className="flex justify-between font-bold text-slate-900">
-              <h3>Information Systems Engineering</h3>
-              <span>Mar 2020 – Present</span>
+            <div className="space-y-1.5">
+              <div className="flex justify-between items-baseline font-bold text-slate-900">
+                <h3>University Analyst & Systems Developer</h3>
+                <span className="text-[10px] text-slate-600 font-mono">Degree Pending / In Progress</span>
+              </div>
+              <p className="text-slate-700">Universidad Tecnológica Nacional — Facultad Regional Santa Fe (UTN FRSF)</p>
+
+              <div className="flex justify-between items-baseline font-bold text-slate-900 pt-1">
+                <h3>Information Systems Engineering (4th Year)</h3>
+                <span className="text-[10px] text-slate-600 font-mono">2020 – In Progress</span>
+              </div>
+              <p className="text-slate-700">Universidad Tecnológica Nacional — Facultad Regional Santa Fe (UTN FRSF)</p>
             </div>
-            <p className="text-slate-700">Universidad Tecnológica Nacional (UTN FRSF) · 4th year</p>
           </section>
           
-          <section className="mt-4">
+          {/* Certifications & Languages */}
+          <section>
             <SectionTitle>Certifications & Languages</SectionTitle>
-            <ul className="list-disc pl-5 space-y-1">
-              <li><strong>Certifications:</strong> Enterprise Full Stack (Spring Boot 4 & Angular 21, 2026), Cybersecurity & Ethical Hacking (BIG School, 2026).</li>
-              <li><strong>Languages:</strong> Spanish (Native), English (+A2 Level).</li>
-            </ul>
+            <div className="space-y-1 text-slate-700">
+              <p><strong>Certifications:</strong> Enterprise Full Stack with Spring Boot & Angular (Dev Senior Code, 2026) • Cybersecurity & Ethical Hacking (BIG School, 2026).</p>
+              <p><strong>Languages:</strong> Spanish (Native) • English (Intermediate / Professional Working Proficiency +A2/B1).</p>
+            </div>
           </section>
 
         </div>
@@ -135,7 +160,7 @@ export default function ResumeEN() {
       <style dangerouslySetInnerHTML={{ __html: `
         @media print {
           body { background-color: white !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-          @page { size: A4; margin: 0; }
+          @page { size: A4; margin: 10mm; }
           .print\\:hidden { display: none !important; }
         }
       ` }} />

@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <!-- Liquid Glass Blue Gradient -->
+    <linearGradient id="nmBlueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2563eb" />
+      <stop offset="60%" stop-color="#1d4ed8" />
+      <stop offset="100%" stop-color="#1e3a8a" />
+    </linearGradient>
+
+    <!-- Neon Rim Gradient -->
+    <linearGradient id="nmRimGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#67e8f9" />
+      <stop offset="50%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#818cf8" />
+    </linearGradient>
+
+    <!-- Top Specular Reflection -->
+    <linearGradient id="nmGlareGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.4" />
+      <stop offset="50%" stop-color="#ffffff" stop-opacity="0.06" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+    </linearGradient>
+
+    <!-- Soft Drop Shadow for Monogram -->
+    <filter id="nmDropShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#000000" flood-opacity="0.5" />
+    </filter>
+
+    <!-- Neon Border Glow -->
+    <filter id="nmGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- 1. Outer Neon Glowing Rim -->
+  <rect
+    x="34"
+    y="34"
+    width="444"
+    height="444"
+    rx="116"
+    fill="none"
+    stroke="url(#nmRimGrad)"
+    stroke-width="12"
+    filter="url(#nmGlow)"
+    opacity="0.95"
+  />
+
+  <!-- 2. Main Liquid Squircle Badge -->
+  <rect
+    x="40"
+    y="40"
+    width="432"
+    height="432"
+    rx="110"
+    fill="url(#nmBlueGrad)"
+    stroke="rgba(255, 255, 255, 0.3)"
+    stroke-width="2"
+  />
+
+  <!-- 3. Top Specular Reflection -->
+  <path
+    d="M 50 160 C 50 90 100 45 170 45 L 342 45 C 412 45 462 90 462 160 C 380 230 220 230 50 160 Z"
+    fill="url(#nmGlareGrad)"
+  />
+
+  <!-- 4. GTA Style 'nm' Monogram Typography -->
+  <g filter="url(#nmDropShadow)" fill="#ffffff">
+    <!-- 'n' Letter with extended bottom bracket underline -->
+    <!-- Left vertical leg -->
+    <rect x="135" y="175" width="45" height="150" rx="3" />
+    
+    <!-- Top bridge of n -->
+    <rect x="135" y="175" width="115" height="42" rx="3" />
+    
+    <!-- Right leg of n extending into underline base -->
+    <path d="
+      M 205 175
+      L 250 175
+      L 250 338
+      C 250 354 262 365 278 365
+      L 380 365
+      L 380 398
+      L 268 398
+      C 225 398 205 372 205 335
+      Z
+    " />
+
+    <!-- 'm' Letter (3 vertical stems with rounded tops, resting on n underline) -->
+    <!-- Stem 1 -->
+    <rect x="260" y="175" width="36" height="150" rx="3" />
+    <!-- Stem 2 -->
+    <rect x="304" y="175" width="36" height="150" rx="3" />
+    <!-- Stem 3 -->
+    <rect x="348" y="175" width="36" height="150" rx="3" />
+
+    <!-- Top continuous bridge of m -->
+    <rect x="260" y="175" width="124" height="42" rx="3" />
+  </g>
+</svg>

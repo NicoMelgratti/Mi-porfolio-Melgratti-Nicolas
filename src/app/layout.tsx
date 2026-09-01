@@ -1,20 +1,59 @@
 import type { Metadata } from "next";
-import { Inter, Manrope } from "next/font/google";
+import { Playfair_Display, Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({
-  variable: "--font-inter",
+const playfair = Playfair_Display({
+  variable: "--font-playfair",
   subsets: ["latin"],
+  display: "swap",
 });
 
-const manrope = Manrope({
-  variable: "--font-manrope",
+const plusJakarta = Plus_Jakarta_Sans({
+  variable: "--font-sans",
   subsets: ["latin"],
+  display: "swap",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains",
+  subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Nicolás Melgratti - Systems Architect",
-  description: "Portfolio of Nicolás Melgratti",
+  metadataBase: new URL("https://nicomelgratti.vercel.app"),
+  title: "Nicolás Melgratti | Full-Stack Software Developer",
+  description: "Portafolio profesional de Nicolás Melgratti. Analista Universitario en Sistemas e Ingeniero de Software.",
+  icons: {
+    icon: [
+      { url: "/icon.png", type: "image/png" },
+      { url: "/logo.png", type: "image/png" },
+    ],
+    shortcut: "/icon.png",
+    apple: "/icon.png",
+  },
+  openGraph: {
+    title: "Nicolás Melgratti | Full-Stack Software Developer",
+    description: "Portafolio profesional y proyectos de Nicolás Melgratti (UTN FRSF).",
+    url: "https://nicomelgratti.vercel.app",
+    siteName: "Nicolás Melgratti Portfolio",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 800,
+        height: 800,
+        alt: "Nicolás Melgratti Logo NM",
+      },
+    ],
+    locale: "es_AR",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Nicolás Melgratti | Full-Stack Software Developer",
+    description: "Portafolio profesional y proyectos de Nicolás Melgratti (UTN FRSF).",
+    images: ["/og-image.png"],
+  },
 };
 
 export default function RootLayout({
@@ -24,10 +63,10 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
-      className={`${inter.variable} ${manrope.variable} h-full antialiased`}
+      lang="es"
+      className={`${plusJakarta.variable} ${playfair.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col font-sans">{children}</body>
     </html>
   );
 }
