@@ -5,12 +5,12 @@ import { User, Cpu, Terminal, GraduationCap, Award, FolderGit2, Briefcase } from
 
 const navItems = [
   { href: '#profile',        icon: User,          label: 'Perfil' },
-  { href: '#skills',         icon: Cpu,           label: 'Stack' },
-  { href: '#projects',       icon: FolderGit2,    label: 'Proyectos' },
-  { href: '#experience',     icon: Briefcase,     label: 'Exp' },
+  { href: '#habilidades',    icon: Cpu,           label: 'Skills' },
+  { href: '#experiencias',   icon: Briefcase,     label: 'Exp' },
+  { href: '#portafolio',     icon: FolderGit2,    label: 'Proyectos' },
+  { href: '#formacion',      icon: GraduationCap, label: 'Edu' },
+  { href: '#certificaciones',icon: Award,          label: 'Cursos' },
   { href: '#terminal',       icon: Terminal,      label: 'Consola' },
-  { href: '#education',      icon: GraduationCap, label: 'Edu' },
-  { href: '#certifications', icon: Award,          label: 'Certs' },
 ];
 
 const sectionIds = navItems.map((item) => item.href.replace('#', ''));

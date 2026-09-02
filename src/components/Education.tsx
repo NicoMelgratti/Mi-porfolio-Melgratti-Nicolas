@@ -2,82 +2,159 @@
 
 import React from 'react';
 import { motion } from 'motion/react';
-import { GraduationCap } from 'lucide-react';
+import { GraduationCap, Award, BookOpen, Calendar, MapPin, CheckCircle2 } from 'lucide-react';
 
-const education = [
+type EducationItem = {
+  institution: string;
+  degree: string;
+  status: string;
+  statusType: 'success' | 'progress' | 'completed';
+  period: string;
+  location: string;
+  icon: React.ElementType;
+  highlights: string[];
+};
+
+const educationList: EducationItem[] = [
   {
-    school: 'Universidad Tecnológica Nacional (UTN FRSF)',
+    institution: 'Universidad Tecnológica Nacional (UTN FRSF)',
     degree: 'Analista y Desarrollador Universitario en Sistemas',
-    period: 'Título en trámite',
-    desc: 'Formación integral en diseño de software, metodologías de desarrollo, ingeniería de requerimientos, modelado de bases de datos relacionales y desarrollo de aplicaciones cliente-servidor.',
-    status: 'En Trámite',
+    status: 'Título en Trámite',
+    statusType: 'success',
+    period: '2020 — 2025',
+    location: 'Santa Fe, Argentina',
+    icon: Award,
+    highlights: [
+      'Ingeniería de requerimientos, análisis y modelado de dominios complejos.',
+      'Diseño y normalización de bases de datos relacionales SQL con PostgreSQL y MySQL.',
+      'Desarrollo de arquitecturas cliente-servidor, APIs RESTful y testing unitario.',
+      'Metodologías ágiles de desarrollo de software (Scrum / Kanban).'
+    ],
   },
   {
-    school: 'Universidad Tecnológica Nacional (UTN FRSF)',
+    institution: 'Universidad Tecnológica Nacional (UTN FRSF)',
     degree: 'Ingeniería en Sistemas de Información',
-    period: '2020 — En curso (4.° Año)',
-    desc: 'Profundización en teoría de sistemas complejos, arquitecturas de software distribuidas, modelos formales de concurrencia y optimización algorítmica.',
-    status: 'En Curso',
+    status: '4.° Año (En Curso)',
+    statusType: 'progress',
+    period: '2020 — Presente',
+    location: 'Santa Fe, Argentina',
+    icon: GraduationCap,
+    highlights: [
+      'Sistemas operativos, concurrencia, hilos y gestión de memoria.',
+      'Arquitecturas de software distribuidas, microservicios y Clean Architecture.',
+      'Teoría de lenguajes, programación lógica (Prolog) y paradigmas formales.',
+      'Modelado de redes, seguridad de la información y algoritmos de optimización.'
+    ],
   },
   {
-    school: 'Bachillerato en Economía',
-    degree: 'Bachillerato en Economía',
+    institution: 'Escuela de Educación Secundaria',
+    degree: 'Bachillerato en Economía y Gestión de las Organizaciones',
+    status: 'Egresado',
+    statusType: 'completed',
     period: 'Completado',
-    desc: 'Fundamentos en análisis cuantitativo, finanzas y modelos económicos aplicados al análisis de requerimientos en sistemas de negocio.',
-    status: 'Completado',
+    location: 'Santa Fe, Argentina',
+    icon: BookOpen,
+    highlights: [
+      'Bases sólidas en análisis cuantitativo, contabilidad y finanzas.',
+      'Comprensión integral de modelos de negocio para software empresarial.',
+      'Gestión de procesos organizacionales y toma de decisiones estratégicas.'
+    ],
   },
 ];
 
 export default function Education() {
   return (
-    <section id="education" className="py-16 px-4 sm:px-8 md:px-12 max-w-5xl mx-auto">
-      {/* Header */}
-      <div className="mb-10">
-        <div className="flex items-center gap-2 text-xs font-mono text-cyan-300 uppercase tracking-widest mb-1.5">
-          <GraduationCap size={14} />
-          <span>Formación Profesional</span>
-        </div>
-        <h2 className="font-headline font-bold text-4xl sm:text-5xl text-white">
-          Educación & <span className="title-gradient italic">Títulos</span>
+    <section id="formacion" className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      {/* Tactical Header */}
+      <div className="flex items-center gap-3 mb-8 border-b border-[#1e3a8a]/60 pb-3">
+        <span className="font-tungsten text-2xl sm:text-3xl text-slate-400">05</span>
+        <span className="h-4 w-[2px] bg-azul"></span>
+        <h2 className="font-tungsten text-4xl sm:text-5xl md:text-6xl text-white uppercase tracking-tight">
+          Formación <span className="text-azul">Académica</span>
         </h2>
       </div>
 
-      {/* Cards */}
-      <div className="space-y-4">
-        {education.map((item, idx) => (
-          <motion.div
-            key={item.degree}
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: idx * 0.08, duration: 0.4 }}
-            className="liquid-glass-card rounded-2xl p-6"
-          >
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
+      {/* Grid of Clean Tactical Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {educationList.map((item, idx) => {
+          const Icon = item.icon;
+
+          return (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: idx * 0.1, duration: 0.5 }}
+              className="tactical-edu-card rounded-2xl p-6 sm:p-7 flex flex-col justify-between"
+            >
               <div>
-                <h3 className="text-xl font-headline font-bold text-white leading-tight">
+                {/* Header: Icon & Status */}
+                <div className="flex items-center justify-between gap-2 mb-4 pb-3 border-b border-blue-900/40">
+                  <div className="w-11 h-11 rounded-xl bg-blue-950 border border-blue-700/80 flex items-center justify-center text-cyan-300 shadow-md">
+                    <Icon size={20} />
+                  </div>
+                  <span
+                    className={`px-3 py-1 text-[11px] font-mono font-bold rounded-full uppercase tracking-wider ${
+                      item.statusType === 'success'
+                        ? 'bg-emerald-950/80 text-emerald-300 border border-emerald-500/50'
+                        : item.statusType === 'progress'
+                        ? 'bg-blue-950/80 text-cyan-300 border border-cyan-400/50'
+                        : 'bg-slate-900 text-slate-300 border border-slate-700'
+                    }`}
+                  >
+                    {item.status}
+                  </span>
+                </div>
+
+                {/* Degree Title */}
+                <h3 className="font-tungsten text-2xl sm:text-3xl text-white uppercase tracking-wide leading-tight mb-2">
                   {item.degree}
                 </h3>
-                <p className="text-xs sm:text-sm text-cyan-300 font-semibold mt-1">{item.school}</p>
+
+                {/* Institution */}
+                <p className="text-xs font-mono font-semibold text-cyan-300 mb-1 flex items-center gap-1.5">
+                  <span className="text-azul font-bold">//</span> {item.institution}
+                </p>
+
+                {/* Period and Location */}
+                <div className="flex items-center gap-3 text-[11px] font-mono text-slate-400 mb-5">
+                  <span className="flex items-center gap-1">
+                    <Calendar size={11} className="text-azul" />
+                    {item.period}
+                  </span>
+                  <span>·</span>
+                  <span className="flex items-center gap-1">
+                    <MapPin size={11} className="text-azul" />
+                    {item.location}
+                  </span>
+                </div>
+
+                {/* Key Highlights */}
+                <div className="space-y-2 pt-3 border-t border-slate-800/80">
+                  <span className="text-[10px] font-mono uppercase text-slate-400 tracking-wider block mb-1.5">
+                    // Competencias Adquiridas:
+                  </span>
+                  {item.highlights.map((h, i) => (
+                    <div key={i} className="flex items-start gap-2 text-xs text-slate-300">
+                      <CheckCircle2 size={13} className="text-azul shrink-0 mt-0.5" />
+                      <span className="leading-snug">{h}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
-              <span
-                className={`self-start sm:self-auto px-3.5 py-1 text-[11px] font-sans font-semibold rounded-full uppercase tracking-wider liquid-glass-subtle border ${
-                  item.status === 'En Trámite'
-                    ? 'text-cyan-300 border-cyan-400/50'
-                    : item.status === 'En Curso'
-                    ? 'text-blue-300 border-blue-400/50'
-                    : 'text-emerald-300 border-emerald-400/50'
-                }`}
-              >
-                {item.period}
-              </span>
-            </div>
-            <p className="text-slate-300 text-xs sm:text-sm leading-relaxed font-normal mt-3">
-              {item.desc}
-            </p>
-          </motion.div>
-        ))}
+
+              {/* Card Footer Tag */}
+              <div className="mt-6 pt-3 border-t border-slate-800/60 flex items-center justify-between text-[10px] font-mono text-slate-500">
+                <span>UTN FRSF</span>
+                <span className="text-cyan-400/80">Plan Acreditado</span>
+              </div>
+            </motion.div>
+          );
+        })}
       </div>
     </section>
   );
 }
+
+

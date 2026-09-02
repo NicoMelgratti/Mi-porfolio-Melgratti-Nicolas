@@ -1,5 +1,5 @@
 import React from 'react';
-import Sidebar from '@/components/Sidebar';
+import Navbar from '@/components/Sidebar';
 import Hero from '@/components/Hero';
 import TechStack from '@/components/TechStack';
 import Projects from '@/components/Projects';
@@ -13,18 +13,18 @@ import MobileNav from '@/components/MobileNav';
 
 export default function App() {
   return (
-    <div className="min-h-screen text-slate-200 relative bg-slate-950">
+    <div className="min-h-screen text-slate-200 relative bg-slate-950 selection:bg-blue-600 selection:text-white">
       <ContactModal />
-      <Sidebar />
+      <Navbar />
 
-      <main className="md:ml-64 min-h-screen relative z-10">
+      <main className="min-h-screen relative z-10 pt-20">
         <Hero />
         <TechStack />
-        <Projects />
         <ExperienceTimeline />
-        <TerminalSection />
+        <Projects />
         <Education />
         <Certifications />
+        <TerminalSection />
         <Footer />
       </main>
 
@@ -32,3 +32,4 @@ export default function App() {
     </div>
   );
 }
+

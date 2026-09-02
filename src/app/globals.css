@@ -2,13 +2,19 @@
 
 @theme {
   --font-sans: var(--font-sans), ui-sans-serif, system-ui, -apple-system, sans-serif;
-  --font-headline: var(--font-playfair), Georgia, serif;
+  --font-headline: var(--font-tungsten), Impact, 'Arial Narrow', sans-serif;
+  --font-tungsten: var(--font-tungsten), Impact, 'Arial Narrow', sans-serif;
   --font-playfair: var(--font-playfair), Georgia, serif;
   --font-mono: var(--font-jetbrains), 'JetBrains Mono', ui-monospace, monospace;
   
-  --color-slate-950: #030712;
-  --color-slate-900: #0b1329;
-  --color-slate-800: #132247;
+  --color-slate-950: #080e1a;
+  --color-slate-900: #0f1929;
+  --color-slate-800: #16243e;
+  
+  /* Tactical Blue Accents (Replacing Red #ff4655) */
+  --color-azul: #38bdf8;
+  --color-azul-dark: #2563eb;
+  --color-azul-glow: #00d2ff;
   
   /* Navy Blue Outlines */
   --color-navy-border: #1e3a8a;
@@ -236,32 +242,141 @@
   -webkit-text-fill-color: transparent;
 }
 
-.glass-terminal {
-  background: linear-gradient(
-    160deg,
-    rgba(3, 7, 18, 0.95) 0%,
-    rgba(15, 23, 42, 0.92) 100%
-  );
-  backdrop-filter: blur(28px);
-  -webkit-backdrop-filter: blur(28px);
-  border: 1px solid rgba(30, 58, 138, 0.65);
-  box-shadow: 
-    inset 0 1px 1px 0 rgba(255, 255, 255, 0.15),
-    0 16px 36px -10px rgba(0, 0, 0, 0.7);
+/* ===== TACTICAL HUD & BLUE VALORANT-STYLE ACCENTS ===== */
+
+.font-tungsten {
+  font-family: var(--font-tungsten), 'Oswald', Impact, 'Arial Narrow', sans-serif;
+  letter-spacing: 0.04em;
 }
 
-/* Terminal Cursor */
-@keyframes terminal-blink {
-  0%, 49% { opacity: 1; }
-  50%, 100% { opacity: 0; }
+.text-azul {
+  color: #38bdf8;
+  text-shadow: 0 0 16px rgba(56, 189, 248, 0.4);
 }
 
-.terminal-cursor {
+.bg-azul {
+  background-color: #2563eb;
+}
+
+.border-azul {
+  border-color: #2563eb;
+}
+
+/* Tactical Skill Diamonds */
+.tactical-diamond {
+  transform: rotate(45deg) skew(10deg, 10deg);
   display: inline-block;
-  width: 8px;
-  height: 14px;
-  background: #67e8f9;
-  vertical-align: middle;
-  animation: terminal-blink 1s step-end infinite;
-  border-radius: 1px;
+  height: 0.85rem;
+  width: 0.85rem;
+  margin-left: 0.35rem;
+  margin-right: 0.35rem;
+  background-color: rgba(100, 116, 139, 0.45);
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
+
+.tactical-diamond-active {
+  background-color: #38bdf8;
+  border-color: #93c5fd;
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.75), inset 0 1px 1px rgba(255, 255, 255, 0.6);
+}
+
+/* Tactical Skill Button */
+.tactical-skill-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 1.25rem;
+  background: rgba(15, 23, 42, 0.75);
+  border: 1px solid rgba(59, 130, 246, 0.35);
+  transition: all 0.2s linear;
+  cursor: pointer;
+}
+
+.tactical-skill-btn:hover,
+.tactical-skill-btn.active {
+  background: #2563eb;
+  border-color: #60a5fa;
+  box-shadow: 0 0 20px rgba(37, 99, 235, 0.5);
+}
+
+.tactical-skill-btn:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: rgba(59, 130, 246, 0.2);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Tactical Education Cards */
+.tactical-edu-card {
+  position: relative;
+  background: linear-gradient(145deg, rgba(15, 23, 42, 0.85) 0%, rgba(10, 18, 38, 0.9) 100%);
+  border: 1px solid rgba(59, 130, 246, 0.35);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tactical-edu-card:hover {
+  border-color: #38bdf8;
+  box-shadow: 0 12px 30px rgba(37, 99, 235, 0.25);
+  transform: translateY(-2px);
+}
+
+
+/* Tactical Course Card */
+.tactical-course-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(59, 130, 246, 0.35);
+  background: rgba(15, 23, 42, 0.85);
+  transition: all 0.25s ease;
+}
+
+.tactical-course-card:hover {
+  border-color: #38bdf8;
+  box-shadow: 0 12px 30px rgba(37, 99, 235, 0.3);
+}
+
+.tactical-course-badge {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  background-color: #2563eb;
+  color: #ffffff;
+  padding: 0.35rem 0.85rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-top-left-radius: 8px;
+  box-shadow: -2px -2px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Info Circle Tooltip */
+.tactical-info-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 9999px;
+  background-color: #2563eb;
+  color: #ffffff;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  box-shadow: 0 0 10px rgba(37, 99, 235, 0.5);
+}
+
+.tactical-info-btn:hover {
+  background-color: #38bdf8;
+  color: #080e1a;
+  transform: scale(1.15);
+}
+

@@ -698,26 +698,24 @@ export default function Projects() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   return (
-    <section id="projects" className="py-16 px-4 sm:px-8 md:px-12 max-w-5xl mx-auto">
-      {/* Section Header */}
-      <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
-        <div>
-          <div className="flex items-center gap-2 text-xs font-mono text-cyan-300 uppercase tracking-widest mb-1.5">
-            <FolderGit2 size={14} />
-            <span>Portafolio de Desarrollo</span>
-          </div>
-          <h2 className="font-headline font-bold text-4xl sm:text-5xl text-white">
-            Proyectos <span className="title-gradient italic">Destacados</span>
+    <section id="portafolio" className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      {/* Tactical Section Header */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8 border-b border-[#1e3a8a]/60 pb-3">
+        <div className="flex items-center gap-3">
+          <span className="font-tungsten text-2xl sm:text-3xl text-slate-400">04</span>
+          <span className="h-4 w-[2px] bg-azul"></span>
+          <h2 className="font-tungsten text-4xl sm:text-5xl md:text-6xl text-white uppercase tracking-tight">
+            Portafolio de <span className="text-azul">Proyectos</span>
           </h2>
         </div>
         <a
           href="https://github.com/NicoMelgratti"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 text-xs font-sans font-semibold text-cyan-300 hover:text-white transition-colors"
+          className="inline-flex items-center gap-2 text-xs font-mono font-semibold text-cyan-300 hover:text-white transition-colors"
         >
           <Github size={14} />
-          Ver todos en GitHub
+          VER TODOS EN GITHUB
           <ExternalLink size={12} />
         </a>
       </div>

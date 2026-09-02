@@ -3,67 +3,76 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import Image from 'next/image';
-import { Download, MapPin, Mail, Briefcase, Code2, Layers, Terminal } from 'lucide-react';
+import { Download, Mail, Code2, MapPin, Sparkles, Terminal } from 'lucide-react';
 
 export default function Hero() {
-  const [isColor, setIsColor] = useState(false);
+  const [isColor, setIsColor] = useState(true);
 
   return (
-    <section id="profile" className="pt-20 pb-16 px-4 sm:px-8 md:px-12 max-w-5xl mx-auto">
-      {/* Top Banner / Availability Badge */}
+    <section id="profile" className="pt-8 pb-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      {/* Tactical Index & Status Header */}
       <motion.div
         initial={{ opacity: 0, y: 15 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="flex flex-wrap items-center gap-3 mb-6"
+        className="flex items-center justify-between gap-3 mb-8 border-b border-[#1e3a8a]/60 pb-3"
       >
-        <span className="inline-flex items-center gap-2 px-3.5 py-1.5 liquid-glass-subtle text-xs font-mono text-cyan-200 rounded-full border border-[#1e3a8a]/80 shadow-sm">
-          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-          Disponible para nuevos proyectos
-        </span>
-        <span className="text-xs text-slate-400 font-mono hidden sm:inline">
-          UTN · Santa Fe, Argentina
-        </span>
+        <div className="flex items-center gap-3">
+          <span className="font-tungsten text-2xl sm:text-3xl text-slate-400">01</span>
+          <span className="h-4 w-[2px] bg-azul"></span>
+          <span className="text-xs font-mono text-cyan-300 uppercase tracking-widest">
+            // RESUMEN PRINCIPAL
+          </span>
+        </div>
+        <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-blue-950/70 border border-cyan-500/40 text-[11px] font-mono text-cyan-200">
+          <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
+          <span className="hidden sm:inline">DISPONIBLE ·</span> SANTA FE, ARGENTINA
+        </div>
       </motion.div>
 
-      {/* Main Hero Header: Name (Playfair Display) + Large Apple Liquid Glass Photo */}
-      <div className="flex flex-col-reverse md:flex-row items-center md:items-start justify-between gap-8 md:gap-10 mb-12">
+      {/* Main Banner Grid: Name / Photo / Bio */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-6 items-center">
         
-        {/* Left Side: Texts & CTAs */}
+        {/* Left Col: Giant Tactical Name (Tungsten Style) */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="flex-1 text-center md:text-left"
+          className="lg:col-span-5 flex flex-col justify-center text-center lg:text-left"
         >
-          <h1 className="font-headline font-bold text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-white tracking-tight leading-[1.05] mb-4">
-            Nicolás <span className="title-gradient italic">Melgratti</span>
-          </h1>
-          
-          <p className="font-sans text-lg sm:text-xl text-blue-200 font-semibold max-w-2xl leading-snug tracking-wide">
-            Full-Stack Software Developer & Estudiante de Ingeniería en Sistemas.
-          </p>
-          
-          <p className="mt-3.5 text-slate-300 text-sm sm:text-base max-w-xl font-normal leading-relaxed">
-            Especializado en arquitecturas backend escalables con <span className="text-cyan-300 font-semibold">Java & Spring Boot</span> y experiencias web reactivas con <span className="text-blue-300 font-semibold">React, Next.js & TypeScript</span>. Apasionado por el Clean Code, metodologías ágiles y sistemas seguros.
-          </p>
+          <div className="flex items-start justify-center lg:justify-start gap-2 mb-2">
+            <span className="font-tungsten text-slate-500 text-xl font-bold hidden lg:inline">01</span>
+            <div className="leading-none overflow-hidden">
+              <h1 className="font-tungsten text-5xl sm:text-6xl md:text-7xl lg:text-7xl xl:text-8xl text-white font-bold tracking-tight uppercase leading-[0.88]">
+                NICOLÁS
+              </h1>
+              <h2 className="font-tungsten text-5xl sm:text-6xl md:text-7xl lg:text-7xl xl:text-8xl text-azul font-bold tracking-tight uppercase leading-[0.88] mt-1">
+                MELGRATTI
+              </h2>
+            </div>
+          </div>
 
-          {/* CTA Action Buttons - Liquid Glass */}
-          <div className="flex flex-wrap items-center justify-center md:justify-start gap-3.5 mt-8">
+          <div className="flex items-center justify-center lg:justify-start gap-2 mt-4 text-xs font-mono text-slate-400">
+            <MapPin size={13} className="text-azul" />
+            <span>UTN FRSF · Santa Fe, Argentina</span>
+          </div>
+
+          {/* CTAs */}
+          <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2.5 mt-6">
             <a
               href="/cv/es"
               target="_blank"
-              className="liquid-glass-btn px-6 py-3.5 text-white font-bold rounded-2xl text-xs sm:text-sm flex items-center gap-2 active:scale-95 cursor-pointer shadow-lg tracking-wide"
+              className="px-5 py-3 rounded-xl bg-azul hover:bg-azul-dark text-white font-sans font-bold text-xs flex items-center gap-2 transition-all active:scale-95 shadow-lg shadow-blue-600/30 cursor-pointer uppercase tracking-wider"
             >
-              <Download size={16} />
-              CV Descargable (ES)
+              <Download size={15} />
+              CV (ES)
             </a>
             <a
               href="/cv/en"
               target="_blank"
-              className="liquid-glass-btn-secondary px-6 py-3.5 text-blue-100 font-semibold rounded-2xl text-xs sm:text-sm flex items-center gap-2 active:scale-95 cursor-pointer tracking-wide"
+              className="px-5 py-3 rounded-xl bg-slate-900/90 hover:bg-slate-800 text-cyan-200 border border-blue-800 hover:border-cyan-400 font-sans font-semibold text-xs flex items-center gap-2 transition-all active:scale-95 cursor-pointer uppercase tracking-wider"
             >
-              <Download size={16} />
+              <Download size={15} />
               Resume (EN)
             </a>
             <button
@@ -71,137 +80,99 @@ export default function Hero() {
                 e.preventDefault();
                 window.dispatchEvent(new CustomEvent('openContactModal'));
               }}
-              className="liquid-glass-subtle hover:border-blue-400 px-5 py-3.5 text-cyan-300 font-semibold rounded-2xl text-xs sm:text-sm flex items-center gap-2 active:scale-95 cursor-pointer transition-all tracking-wide"
+              className="px-4 py-3 rounded-xl bg-blue-950/60 hover:bg-blue-900/80 text-slate-200 border border-[#1e3a8a] font-sans font-medium text-xs flex items-center gap-2 transition-all active:scale-95 cursor-pointer"
             >
-              <Mail size={16} />
-              Contacto
+              <Mail size={15} className="text-cyan-300" />
             </button>
           </div>
         </motion.div>
 
-        {/* Right Side: Large Liquid Glass Photo */}
+        {/* Center Col: Character / Profile Photo with Tactical Frame */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
+          initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="shrink-0 flex flex-col items-center"
+          className="lg:col-span-3 flex justify-center"
         >
           <div
             onClick={() => setIsColor(!isColor)}
-            className="group relative cursor-pointer select-none"
-            title="Haz click o toca para cambiar a color"
+            className="relative group cursor-pointer"
+            title="Click para alternar filtro"
           >
-            {/* Pastel background aura */}
-            <div
-              className={`absolute -inset-2 rounded-[2.2rem] bg-gradient-to-tr from-blue-600 via-indigo-500 to-cyan-400 blur-xl transition-all duration-700 ${
-                isColor ? 'opacity-70' : 'opacity-25 group-hover:opacity-60'
-              }`}
-            />
+            {/* Blue Tactical Halo */}
+            <div className="absolute -inset-2 rounded-2xl bg-gradient-to-tr from-blue-600 via-cyan-500 to-indigo-600 blur-lg opacity-30 group-hover:opacity-50 transition-opacity duration-300 pointer-events-none" />
 
-            {/* Apple Liquid Glass Photo Frame */}
-            <div
-              className={`relative w-52 h-52 sm:w-60 sm:h-60 md:w-64 md:h-64 lg:w-72 lg:h-72 rounded-[2rem] overflow-hidden border-2 transition-all duration-500 p-1.5 ${
-                isColor
-                  ? 'border-cyan-400/90 shadow-[0_0_30px_rgba(34,211,238,0.35)] scale-[1.02]'
-                  : 'border-[#1e3a8a] group-hover:border-cyan-400/80 group-hover:scale-[1.02]'
-              }`}
-              style={{
-                background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(30, 58, 138, 0.3) 100%)',
-                backdropFilter: 'blur(28px)',
-              }}
-            >
-              <div className="relative w-full h-full rounded-[1.6rem] overflow-hidden">
+            <div className="relative w-52 h-64 sm:w-56 sm:h-72 md:w-60 md:h-76 rounded-2xl overflow-hidden border-2 border-blue-600/70 p-1.5 bg-slate-950/90 backdrop-blur-md shadow-2xl group-hover:border-cyan-400 transition-all duration-300">
+              <div className="relative w-full h-full rounded-xl overflow-hidden bg-slate-900">
                 <Image
                   src="/perfil.jpg"
                   alt="Nicolás Melgratti"
                   fill
                   priority
-                  sizes="(max-width: 768px) 240px, 288px"
-                  className={`object-cover object-center transition-all duration-700 ease-out ${
+                  sizes="(max-width: 768px) 240px, 260px"
+                  className={`object-cover object-center transition-all duration-500 ease-out ${
                     isColor
-                      ? 'grayscale-0 contrast-100 brightness-100'
-                      : 'grayscale group-hover:grayscale-0 contrast-105 brightness-95 group-hover:brightness-100'
+                      ? 'grayscale-0 contrast-105'
+                      : 'grayscale group-hover:grayscale-0 contrast-110'
                   }`}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-white/10 pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-transparent to-cyan-500/10 pointer-events-none" />
+                
+                {/* Tactical Corner Marks */}
+                <div className="absolute top-2 left-2 w-3 h-3 border-t-2 border-l-2 border-cyan-400" />
+                <div className="absolute top-2 right-2 w-3 h-3 border-t-2 border-r-2 border-cyan-400" />
+                <div className="absolute bottom-2 left-2 w-3 h-3 border-b-2 border-l-2 border-cyan-400" />
+                <div className="absolute bottom-2 right-2 w-3 h-3 border-b-2 border-r-2 border-cyan-400" />
               </div>
             </div>
           </div>
         </motion.div>
 
-      </div>
-
-      {/* Quick Profile Cards Grid - Apple Liquid Glass Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
-        {/* Card 1 */}
+        {/* Right Col: Role & Biography Panels */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="liquid-glass-card rounded-2xl p-5"
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="lg:col-span-4 flex flex-col justify-center space-y-4"
         >
-          <div className="flex items-center gap-2.5 mb-3.5 text-blue-300">
-            <Briefcase size={18} />
-            <h3 className="font-headline font-bold text-white text-base">Información Clave</h3>
+          {/* ROL Section */}
+          <div className="p-5 rounded-2xl liquid-glass-card border border-blue-900/60">
+            <h3 className="text-xs font-mono text-slate-400 uppercase tracking-widest flex items-center gap-1.5 mb-2">
+              <span className="text-azul font-bold">//</span> ROL
+            </h3>
+            <div className="flex items-center gap-3">
+              <div className="w-9 h-9 rounded-xl bg-azul flex items-center justify-center text-white shrink-0 shadow-md shadow-blue-600/40">
+                <Code2 size={18} />
+              </div>
+              <div>
+                <h4 className="font-tungsten text-2xl sm:text-3xl text-white tracking-wide uppercase leading-tight">
+                  Full-Stack Developer
+                </h4>
+                <p className="text-[11px] font-mono text-cyan-300">
+                  Java · Spring Boot · React · Next.js
+                </p>
+              </div>
+            </div>
           </div>
-          <div className="space-y-2.5 text-xs text-slate-300">
-            <div className="flex items-center gap-2">
-              <MapPin size={13} className="text-blue-400 shrink-0" />
-              <span>Santa Fe, Argentina</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Mail size={13} className="text-blue-400 shrink-0" />
-              <span className="truncate">nicomelgratti@gmail.com</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Code2 size={13} className="text-blue-400 shrink-0" />
-              <span className="text-cyan-300 font-medium">Analista Univ. en Sistemas (En trámite)</span>
+
+          {/* BIOGRAFIA Section */}
+          <div className="p-5 rounded-2xl liquid-glass-card border border-blue-900/60">
+            <h3 className="text-xs font-mono text-slate-400 uppercase tracking-widest flex items-center gap-1.5 mb-2">
+              <span className="text-azul font-bold">//</span> BIOGRAFÍA
+            </h3>
+            <p className="text-slate-300 text-xs sm:text-sm leading-relaxed font-normal">
+              Argentino apasionado por la ingeniería de software y el desarrollo de soluciones escalables. Especializado en backend con <strong className="text-cyan-300 font-semibold">Java & Spring Boot</strong> y web reactiva con <strong className="text-blue-300 font-semibold">React, Next.js & TypeScript</strong>.
+            </p>
+            <div className="mt-3 pt-3 border-t border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-400">
+              <span>UTN Santa Fe</span>
+              <span className="text-azul font-semibold">4.° Año / Analista (En trámite)</span>
             </div>
           </div>
         </motion.div>
 
-        {/* Card 2 */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.35 }}
-          className="liquid-glass-card rounded-2xl p-5"
-        >
-          <div className="flex items-center gap-2.5 mb-3.5 text-cyan-300">
-            <Layers size={18} />
-            <h3 className="font-headline font-bold text-white text-base">Especialidades</h3>
-          </div>
-          <div className="flex flex-wrap gap-1.5">
-            {['Java / Spring Boot', 'React & Next.js', 'PostgreSQL', 'Scrum / Agile', 'RESTful APIs', 'Docker & CI/CD'].map((item) => (
-              <span
-                key={item}
-                className="px-2.5 py-1 liquid-glass-subtle text-[11px] font-sans font-medium text-cyan-200 rounded-lg border border-[#1e3a8a]"
-              >
-                {item}
-              </span>
-            ))}
-          </div>
-        </motion.div>
-
-        {/* Card 3 */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="liquid-glass-card rounded-2xl p-5"
-        >
-          <div className="flex items-center gap-2.5 mb-3.5 text-indigo-300">
-            <Terminal size={18} />
-            <h3 className="font-headline font-bold text-white text-base">Academia & Rigor</h3>
-          </div>
-          <p className="text-xs text-slate-300 leading-relaxed font-light mb-2">
-            Universidad Tecnológica Nacional (UTN FRSF).
-          </p>
-          <p className="text-[11px] text-slate-400 font-mono">
-            Ingeniería en Sistemas de Información (4.° año) & Analista Universitario (Título en trámite).
-          </p>
-        </motion.div>
       </div>
     </section>
   );
 }
+
+

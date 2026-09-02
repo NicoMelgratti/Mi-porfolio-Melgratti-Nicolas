@@ -88,15 +88,13 @@ export default function TerminalSection() {
   };
 
   return (
-    <section id="terminal" className="py-16 px-4 sm:px-8 md:px-12 max-w-5xl mx-auto">
-      {/* Header */}
-      <div className="mb-8">
-        <div className="flex items-center gap-2 text-xs font-mono text-cyan-300 uppercase tracking-widest mb-1.5">
-          <Terminal size={14} />
-          <span>Consola Interactiva</span>
-        </div>
-        <h2 className="font-headline font-bold text-4xl sm:text-5xl text-white">
-          Developer <span className="title-gradient italic">Console</span>
+    <section id="terminal" className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      {/* Tactical Header */}
+      <div className="flex items-center gap-3 mb-8 border-b border-[#1e3a8a]/60 pb-3">
+        <span className="font-tungsten text-2xl sm:text-3xl text-slate-400">06</span>
+        <span className="h-4 w-[2px] bg-azul"></span>
+        <h2 className="font-tungsten text-4xl sm:text-5xl md:text-6xl text-white uppercase tracking-tight">
+          Developer <span className="text-azul">Console</span>
         </h2>
       </div>
 

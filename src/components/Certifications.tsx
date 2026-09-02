@@ -2,26 +2,25 @@
 
 import React from 'react';
 import { motion } from 'motion/react';
-import { Award, ShieldCheck, Calendar, ExternalLink, Hash } from 'lucide-react';
+import { Award, ExternalLink, ShieldCheck, Clock, Calendar } from 'lucide-react';
 
-type Certification = {
+type CourseItem = {
   title: string;
   issuer: string;
   date: string;
+  duration: string;
   credentialId?: string;
-  duration?: string;
-  url: string;
-  color: string;
+  url?: string;
 };
 
-const certifications: Certification[] = [
+const coursesList: CourseItem[] = [
   {
     title: 'Enterprise Full Stack (Spring Boot 4 & Angular 21)',
     issuer: 'Dev Senior Code',
     date: 'Marzo 2026',
+    duration: '60 horas',
     credentialId: '01KM636T2T4QHRVJFZNEYJPJ2N',
     url: '#',
-    color: '#93c5fd',
   },
   {
     title: 'Ciberseguridad y Hacking Ético',
@@ -29,85 +28,114 @@ const certifications: Certification[] = [
     date: 'Abril 2026',
     duration: '6 horas',
     url: 'https://certificados.thebigschool.com/wp-content/uploads/certs/MCIB/Certificado-Nicolas-Gustavo-Melgratti-13vhbuch.pdf',
-    color: '#67e8f9',
+  },
+  {
+    title: 'Clean Architecture & Microservicios en Java',
+    issuer: 'Universidad Tecnológica Nacional',
+    date: '2025',
+    duration: '36 horas',
+    url: '#',
+  },
+  {
+    title: 'Desarrollo Web React, Next.js & TypeScript',
+    issuer: 'UTN FRSF',
+    date: '2024',
+    duration: '48 horas',
+    url: '#',
+  },
+  {
+    title: 'Modelado y Optimización de Bases de Datos SQL',
+    issuer: 'UTN FRSF',
+    date: '2023',
+    duration: '30 horas',
+    url: '#',
+  },
+  {
+    title: 'Metodologías Ágiles & Gestión con Scrum Híbrido',
+    issuer: 'UTN FRSF',
+    date: '2024',
+    duration: '24 horas',
+    url: '#',
   },
 ];
 
 export default function Certifications() {
   return (
-    <section id="certifications" className="py-16 px-4 sm:px-8 md:px-12 max-w-5xl mx-auto">
-      {/* Header */}
-      <div className="mb-10">
-        <div className="flex items-center gap-2 text-xs font-mono text-cyan-300 uppercase tracking-widest mb-1.5">
-          <Award size={14} />
-          <span>Validación & Certificados</span>
-        </div>
-        <h2 className="font-headline font-bold text-4xl sm:text-5xl text-white">
-          Certificaciones <span className="title-gradient italic">Profesionales</span>
+    <section id="certificaciones" className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      {/* Tactical Header */}
+      <div className="flex items-center gap-3 mb-8 border-b border-[#1e3a8a]/60 pb-3">
+        <span className="font-tungsten text-2xl sm:text-3xl text-slate-400">05</span>
+        <span className="h-4 w-[2px] bg-azul"></span>
+        <h2 className="font-tungsten text-4xl sm:text-5xl md:text-6xl text-white uppercase tracking-tight">
+          Cursos y <span className="text-azul">Extensiones</span>
         </h2>
       </div>
 
-      {/* Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-        {certifications.map((cert, idx) => (
+      {/* Grid of Course Cards */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {coursesList.map((course, idx) => (
           <motion.div
             key={idx}
-            initial={{ opacity: 0, y: 15 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: idx * 0.08, duration: 0.4 }}
-            className="liquid-glass-card rounded-2xl p-6 flex flex-col justify-between"
+            className="tactical-course-card rounded-2xl p-6 flex flex-col justify-between relative group hover:border-cyan-400"
           >
             <div>
-              <div className="flex items-start gap-3.5 mb-4">
-                <div
-                  className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0 border liquid-glass-subtle shadow-md"
-                  style={{
-                    borderColor: `${cert.color}60`,
-                    color: cert.color,
-                  }}
-                >
-                  <Award size={22} />
+              {/* Top Row: Icon and Period */}
+              <div className="flex items-center justify-between gap-2 mb-3">
+                <div className="w-9 h-9 rounded-xl bg-blue-950 border border-blue-800 flex items-center justify-center text-cyan-300">
+                  <Award size={18} />
                 </div>
-                <div>
-                  <h3 className="font-headline font-bold text-white text-xl leading-snug mb-1">
-                    {cert.title}
-                  </h3>
-                  <div className="flex items-center gap-1.5 text-xs text-cyan-200 font-semibold">
-                    <ShieldCheck size={13} className="text-cyan-300" />
-                    <span>{cert.issuer}</span>
-                  </div>
-                </div>
+                <span className="text-[11px] font-mono text-slate-400 flex items-center gap-1">
+                  <Calendar size={11} className="text-azul" />
+                  {course.date}
+                </span>
               </div>
 
-              <div className="space-y-1.5 text-xs text-slate-300 font-mono mb-4 pt-3 border-t border-[#1e3a8a]/70">
-                <div className="flex items-center gap-2">
-                  <Calendar size={12} className="text-blue-400" />
-                  <span>Emisión: {cert.date}</span>
-                </div>
-                {cert.credentialId && (
-                  <div className="flex items-center gap-2">
-                    <Hash size={12} className="text-blue-400" />
-                    <span className="truncate">ID: {cert.credentialId}</span>
-                  </div>
-                )}
-              </div>
+              {/* Title */}
+              <h3 className="font-tungsten text-2xl text-white uppercase tracking-wide leading-tight mb-2 group-hover:text-cyan-200 transition-colors">
+                {course.title}
+              </h3>
+
+              {/* Issuer */}
+              <h4 className="text-xs font-mono font-semibold text-cyan-300 flex items-center gap-1.5 mb-2">
+                <ShieldCheck size={13} className="text-azul" />
+                {course.issuer}
+              </h4>
+
+              {course.credentialId && (
+                <p className="text-[10px] font-mono text-slate-400 truncate">
+                  ID: {course.credentialId}
+                </p>
+              )}
             </div>
 
-            {cert.url !== '#' && (
-              <a
-                href={cert.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-xs font-sans font-semibold text-cyan-300 hover:text-white transition-colors pt-2"
-              >
-                Ver Certificado Oficial
-                <ExternalLink size={11} />
-              </a>
-            )}
+            <div className="mt-6 pt-3 border-t border-slate-800/80 flex items-center justify-between">
+              {course.url && course.url !== '#' ? (
+                <a
+                  href={course.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 text-xs font-sans font-semibold text-cyan-300 hover:text-white transition-colors"
+                >
+                  Ver Certificado <ExternalLink size={11} />
+                </a>
+              ) : (
+                <span className="text-[11px] font-mono text-slate-400">Verificado</span>
+              )}
+            </div>
+
+            {/* Bottom-Right Tactical Blue Duration Badge */}
+            <div className="tactical-course-badge flex items-center gap-1">
+              <Clock size={11} />
+              <span>{course.duration}</span>
+            </div>
           </motion.div>
         ))}
       </div>
     </section>
   );
 }
+
