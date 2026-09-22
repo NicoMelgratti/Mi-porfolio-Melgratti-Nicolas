@@ -22,14 +22,15 @@ const experiences: Experience[] = [
     period: '2025 — Actualidad',
     role: 'Full-Stack Developer & Software Architect',
     company: 'Proyectos Independientes & Freelance',
-    summary: 'Arquitectura, desarrollo y despliegue de soluciones cloud completas con pasarelas de pago y logística integrada.',
+    summary: 'Arquitectura, desarrollo y despliegue de soluciones cloud completas con IA integrada, pasarelas de pago y logística.',
     functions: [
+      'Desarrollo de E22 GYM (gestión deportiva, planillas técnicas con periodización RIR y Coach Virtual con Google Gemini Flash Lite).',
       'Desarrollo y puesta en producción de Zinerva (e-commerce con Next.js 15, Mercado Pago Checkout Pro y API Correo Argentino).',
       'Desarrollo integral de SicroCare (sistema de control médico, signos vitales y fichas de emergencia hospitalaria).',
       'Modelado de bases de datos relacionales PostgreSQL con alta integridad y transacciones concurrentes.',
-      'Diseño de interfaces fluidas con Tailwind CSS, Framer Motion y optimización SEO / Core Web Vitals.'
+      'Diseño de interfaces fluidas con Tailwind CSS, Motion y optimización SEO / Core Web Vitals.'
     ],
-    tech: ['Next.js', 'React', 'Java', 'Spring Boot', 'PostgreSQL', 'Mercado Pago', 'Vercel'],
+    tech: ['Next.js', 'React', 'Google Gemini', 'Java', 'Spring Boot', 'PostgreSQL', 'Mercado Pago', 'Vercel'],
     icon: Rocket,
     accent: '#38bdf8',
   },

@@ -44,6 +44,49 @@ export type Project = {
 
 const projects: Project[] = [
   {
+    id: 'e22-gym',
+    title: 'E22 GYM — Gestión Deportiva & IA',
+    tag: 'Full-Stack & Gemini AI',
+    badge: 'Next.js 15 · Gemini AI',
+    desc: 'Plataforma web integral de alto rendimiento para administración de gimnasios, cuotas de 30 días, digitalización de planillas técnicas con periodización RIR y Coach Virtual con Google Gemini.',
+    longDesc: 'Plataforma web integral de alto rendimiento diseñada para la administración de gimnasios, gestión de cuotas y membresías de 30 días, digitalización de planillas técnicas de entrenamiento, prescripción personalizada de rutinas y seguimiento de sobrecarga progresiva con Inteligencia Artificial multimodal. Desarrollada bajo una estética Stealth Dark Minimalista Deportiva (paleta negro/zinc con alto contraste y tipografía monoespaciada para telemetría de gimnasio), 100% responsiva para celulares y tablets.',
+    features: [
+      'Planilla Técnica Oficial E22: Réplica digital exacta de la hoja de entrenamiento física con periodización multi-bloque en 4 fases, control de intensidad RIR (Kg, Repeticiones y Series) y exportación directa en formato A4 PDF.',
+      'Inteligencia Artificial Multimodal (Google Gemini): Escáner de rutinas manuscritas o archivos Excel (.xlsx, .csv) que reconoce caligrafía y convierte automáticamente los ejercicios a la estructura oficial de E22.',
+      'Coach Virtual E22 Inteligente: Asistente personal en tiempo real que mapea la rutina según el día actual en horario local argentino, desglosa ejercicios recomendados y resuelve dudas biomecánicas en ~950 ms (Gemini Flash Lite).',
+      'Control de Cuotas y Membresías de 30 Días: Contador regresivo en vivo de días restantes de suscripción, carga de comprobantes de transferencia y aprobación en un solo clic con habilitación inmediata.',
+      'Sobrecarga Progresiva y Récords Personales (PRs): Registro semana a semana de cargas (kg), repeticiones y notas técnicas con detección automática de marcas personales e historial evolutivo.'
+    ],
+    architecture: 'Next.js 15 (App Router), React, Tailwind CSS, PostgreSQL, Google Gemini Flash Lite (Multimodal API), TypeScript y persistencia optimizada.',
+    tech: ['Next.js', 'React', 'Tailwind CSS', 'PostgreSQL', 'Google Gemini', 'TypeScript'],
+    repoUrl: 'https://github.com/NicoMelgratti/gym-management-system',
+    accent: '#34d399',
+    linkType: 'github',
+    featured: true,
+    images: [
+      {
+        url: '/projects/e22-gym/student-portal.png',
+        title: 'Portal del Alumno & Coach Virtual',
+        caption: 'Dashboard del atleta con conteo regresivo de membresía (30 días), ficha médica, registro de cargas y Coach Virtual inteligente con Google Gemini.',
+      },
+      {
+        url: '/projects/e22-gym/trainer-dashboard.png',
+        title: 'Panel del Entrenador & Editor de Rutinas',
+        caption: 'Gestión centralizada de socios con filtros en vivo, métricas de capacidad de sala, asignación y edición técnica de rutinas por días.',
+      },
+      {
+        url: '/projects/e22-gym/technical-sheet.png',
+        title: 'Planilla Técnica Oficial E22',
+        caption: 'Fiel réplica digital de la hoja física con periodización en 4 etapas, control RIR (Kg, Repeticiones y Series) y descarga oficial en PDF.',
+      },
+      {
+        url: '/projects/e22-gym/login-portal.png',
+        title: 'Portal de Acceso Seguro (Stealth Dark)',
+        caption: 'Autenticación para socios y entrenadores con diseño minimalista de alto contraste y telemetría deportiva 100% responsiva.',
+      },
+    ],
+  },
+  {
     id: 'zinerva',
     title: 'Zinerva E-commerce',
     tag: 'Full-Stack Web',

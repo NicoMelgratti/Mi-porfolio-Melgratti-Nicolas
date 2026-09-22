@@ -63,7 +63,7 @@ export default function ResumeES() {
             <SectionTitle>Habilidades Técnicas</SectionTitle>
             <div className="space-y-1 text-slate-700">
               <p><strong>Lenguajes:</strong> Java, TypeScript, JavaScript, SQL, Python, C++, C, SWI-Prolog.</p>
-              <p><strong>Frameworks & Librerías:</strong> Spring Boot, React, Next.js, Angular, Tailwind CSS, Node.js.</p>
+              <p><strong>Frameworks & Librerías:</strong> Spring Boot, React, Next.js, Angular, Tailwind CSS, Google Gemini API, Node.js.</p>
               <p><strong>Bases de Datos & Cloud:</strong> PostgreSQL, MySQL, Supabase, Docker, Vercel, Firebase.</p>
               <p><strong>Herramientas & Prácticas:</strong> Git, GitHub, RESTful APIs, Clean Architecture, SOLID, JUnit 5, Mockito, Postman, Swagger/OpenAPI, Scrum Híbrido, CI/CD.</p>
             </div>
@@ -97,6 +97,20 @@ export default function ResumeES() {
               <ul className="list-disc pl-4 space-y-0.5 text-slate-700">
                 <li>Lideré el desarrollo de un sistema institucional para la emisión y renovación de licencias de conducir, aplicando metodología ágil Scrum híbrido con entregas iterativas.</li>
                 <li>Implementé reglas de negocio para validación de vigencias, auditoría de trámites, control de exámenes y gestión de roles y permisos (RBAC).</li>
+              </ul>
+            </div>
+
+            {/* E22 GYM */}
+            <div className="mb-2.5">
+              <div className="flex justify-between items-baseline font-bold text-slate-900">
+                <h3 className="text-xs">E22 GYM — Gestión Deportiva & Asistente IA (Google Gemini)</h3>
+                <span className="text-[10px] text-slate-600 font-mono">2026 – Presente</span>
+              </div>
+              <p className="italic text-[10.5px] text-slate-600 mb-1">Next.js 15, React, Tailwind CSS, PostgreSQL, Google Gemini Flash Lite, TypeScript</p>
+              <ul className="list-disc pl-4 space-y-0.5 text-slate-700">
+                <li>Desarrollé una plataforma integral con estética Stealth Dark, control de membresías de 30 días, verificación de comprobantes y telemetría de gimnasio.</li>
+                <li>Digitalicé la planilla técnica oficial con periodización en 4 fases, control RIR (Kg, Repeticiones, Series), marcas PR y exportación a PDF A4.</li>
+                <li>Integré IA multimodal con Google Gemini para escaneo OCR de rutinas manuscritas/Excel y Coach Virtual interactivo en tiempo real (~950 ms).</li>
               </ul>
             </div>
 

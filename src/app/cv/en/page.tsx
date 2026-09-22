@@ -63,7 +63,7 @@ export default function ResumeEN() {
             <SectionTitle>Technical Skills</SectionTitle>
             <div className="space-y-1 text-slate-700">
               <p><strong>Languages:</strong> Java, TypeScript, JavaScript, SQL, Python, C++, C, SWI-Prolog.</p>
-              <p><strong>Frameworks & Libraries:</strong> Spring Boot, React, Next.js, Angular, Tailwind CSS, Node.js.</p>
+              <p><strong>Frameworks & Libraries:</strong> Spring Boot, React, Next.js, Angular, Tailwind CSS, Google Gemini API, Node.js.</p>
               <p><strong>Databases & Cloud:</strong> PostgreSQL, MySQL, Supabase, Docker, Vercel, Firebase.</p>
               <p><strong>Tools & Practices:</strong> Git, GitHub, RESTful APIs, Clean Architecture, SOLID, JUnit 5, Mockito, Postman, Swagger/OpenAPI, Hybrid Scrum, CI/CD.</p>
             </div>
@@ -97,6 +97,20 @@ export default function ResumeEN() {
               <ul className="list-disc pl-4 space-y-0.5 text-slate-700">
                 <li>Led software development for an institutional driver&apos;s license issuance platform applying hybrid Scrum methodology with iterative sprints.</li>
                 <li>Implemented core business rules for validity calculations, audit logging, medical examination tracking, and role-based access control (RBAC).</li>
+              </ul>
+            </div>
+
+            {/* E22 GYM */}
+            <div className="mb-2.5">
+              <div className="flex justify-between items-baseline font-bold text-slate-900">
+                <h3 className="text-xs">E22 GYM — Sports Management Platform & AI Assistant (Google Gemini)</h3>
+                <span className="text-[10px] text-slate-600 font-mono">2026 – Present</span>
+              </div>
+              <p className="italic text-[10.5px] text-slate-600 mb-1">Next.js 15, React, Tailwind CSS, PostgreSQL, Google Gemini Flash Lite, TypeScript</p>
+              <ul className="list-disc pl-4 space-y-0.5 text-slate-700">
+                <li>Engineered a full-stack gym platform featuring Stealth Dark athletic UI, 30-day membership cycles, payment receipts verification, and live telemetry.</li>
+                <li>Digitized official training logs with 4-phase periodization, RIR intensity tracking (Kg, Reps, Sets), PR recognition, and A4 PDF export.</li>
+                <li>Integrated multimodal AI with Google Gemini for handwritten routine OCR (photo/Excel) and a low-latency (~950 ms) AI Virtual Coach.</li>
               </ul>
             </div>
 

@@ -17,6 +17,7 @@ const script: TerminalLine[] = [
   { type: 'output', text: '1. SicroCare — Sistema de control médico, signos vitales y alarmas de medicación' },
   { type: 'output', text: '2. Emisión Licencias — TP UTN Scrum híbrido con backend Java Spring Boot' },
   { type: 'output', text: '3. Zinerva — E-commerce en Vercel con Mercado Pago Checkout Pro (E2E) & PAQ.AR' },
+  { type: 'output', text: '4. E22 GYM — Gestión deportiva, planillas técnicas y Coach IA con Google Gemini' },
   { type: 'blank' },
   { type: 'command', text: 'git status' },
   { type: 'output', text: 'On branch main · working tree clean · open to work' },
